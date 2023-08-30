@@ -1,13 +1,26 @@
 import 'package:flutter/material.dart';
 
-class ColorManager {
-  static Color primary = HexColor.fromHexa("#ED9728");
-  static Color darkGrey = HexColor.fromHexa("#525252");
-  static Color grey = HexColor.fromHexa("#737477");
-  static Color lightGrey = HexColor.fromHexa("#9E9E9E");
-  static Color primaryOpacity70 = HexColor.fromHexa("#B3ED9728");
+abstract class ColorManager {
+  // Primary Orange
+  static Color darkPrimary = const Color(0xffd17d11);
+  static Color lightPrimary = const Color(0xCCd17d11); // color with 80% opacity
+  static Color primary = const Color(0xffED9728);
+
+  // gray
+  static Color darkGrey = const Color(0xff525252);
+  static Color grey = const Color(0xff737477);
+  static Color lightGrey = const Color(0xff9E9E9E);
+
+  // // new colors
+  // static Color grey1 = const Color(0xff707070);
+  // static Color grey2 = const Color(0xff797979);
+  static Color white = const Color(0xffFFFFFF);
+  static Color error = const Color(0xffe61f34); // red color
 }
 
+// This extension is not used because of
+// - using it prevent us from using const Color constructor and prevent us
+// from seeing the colors that we use
 extension HexColor on Color {
   ///
   /// Method to convert the hexa colors string into  a [Color] object
@@ -33,4 +46,28 @@ extension HexColor on Color {
     }
     return Color(int.parse(readyToParseString));
   }
+}
+
+enum AppColors {
+  darkPrimary,
+  lightPrimary,
+  primary,
+  darkGrey,
+  grey,
+  lightGrey,
+  white,
+  error,
+}
+
+extension AppColorsEnumValues on AppColors {
+  Color get value => switch (this) {
+        AppColors.darkPrimary => ColorManager.darkPrimary,
+        AppColors.lightPrimary => ColorManager.lightPrimary,
+        AppColors.primary => ColorManager.primary,
+        AppColors.darkGrey => ColorManager.darkGrey,
+        AppColors.grey => ColorManager.grey,
+        AppColors.lightGrey => ColorManager.lightGrey,
+        AppColors.white => ColorManager.white,
+        AppColors.error => ColorManager.error,
+      };
 }

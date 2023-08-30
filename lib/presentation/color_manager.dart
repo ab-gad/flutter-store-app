@@ -15,7 +15,10 @@ abstract class ColorManager {
   // static Color grey1 = const Color(0xff707070);
   // static Color grey2 = const Color(0xff797979);
   static Color white = const Color(0xffFFFFFF);
+  static Color black = const Color(0x00000000);
   static Color error = const Color(0xffe61f34); // red color
+  static Color errorLight =
+      const Color.fromARGB(255, 255, 118, 132); // red color
 }
 
 // This extension is not used because of

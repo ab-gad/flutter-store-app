@@ -16,6 +16,7 @@ abstract class FontConstants {
   static const s14 = 14.0;
   static const s16 = 16.0;
   static const s18 = 18.0;
+  static const s17 = 18.0;
   static const s20 = 20.0;
 }
 
@@ -43,6 +44,7 @@ enum AppFontSizes {
   s12,
   s14,
   s16,
+  s17,
   s18,
   s20,
 }
@@ -53,6 +55,7 @@ extension AppFontSizesEnumValues on AppFontSizes {
       AppFontSizes.s12 => FontConstants.s12,
       AppFontSizes.s14 => FontConstants.s14,
       AppFontSizes.s16 => FontConstants.s16,
+      AppFontSizes.s17 => FontConstants.s17,
       AppFontSizes.s18 => FontConstants.s18,
       AppFontSizes.s20 => FontConstants.s20,
     };

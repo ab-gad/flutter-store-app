@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_store_app/presentation/Color-manager.dart';
+import 'package:flutter_store_app/presentation/color_manager.dart';
 import 'package:flutter_store_app/presentation/fonts_manager.dart';
 
 class TextStyleManager {

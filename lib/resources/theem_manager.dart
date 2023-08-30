@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_store_app/presentation/color_manager.dart';
-import 'package:flutter_store_app/presentation/fonts_manager.dart';
-import 'package:flutter_store_app/presentation/style_manager.dart';
-import 'package:flutter_store_app/presentation/values_manager.dart';
+import 'color_manager.dart';
+import 'fonts_manager.dart';
+import 'style_manager.dart';
+import 'values_manager.dart';
 
 abstract class ThemeManager {
   static const defaultElevation = AppValues.v4;

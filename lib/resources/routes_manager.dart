@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_store_app/presentation/forget_password/forget_password_view.dart';
-import 'package:flutter_store_app/presentation/login/login_view.dart';
-import 'package:flutter_store_app/presentation/registration/registration_view.dart';
-import 'package:flutter_store_app/presentation/splash/splash_view.dart';
+import '../presentation/forget_password/forget_password_view.dart';
+import '../presentation/login/login_view.dart';
+import '../presentation/registration/registration_view.dart';
+import '../presentation/splash/splash_view.dart';
 
 import '../presentation/main/main_view.dart';
 import '../presentation/page_not_found/page_not_found_view.dart';
@@ -17,11 +17,19 @@ abstract class RoutesManager {
   static const storeDetails = '/storeDetails';
   static const pageNotFound = '/404';
 
-  static MaterialPageRoute generateRout(AppRoutes route, [Object? arguments]) {
-    return MaterialPageRoute(builder: (_) => route.page);
+  static Route<dynamic> generateRout(RouteSettings settings) {
+    return MaterialPageRoute(builder: (_) => settings.route.page);
   }
 
-  static get undefinedRout => generateRout(AppRoutes.pageNotFound);
+  static get undefinedRout =>
+      generateRout(AppRouteSettings(AppRoutes.pageNotFound));
+}
+
+class AppRouteSettings extends RouteSettings {
+  final AppRoutes route;
+
+  AppRouteSettings(this.route, [Object? arguments])
+      : super(name: route.path, arguments: arguments);
 }
 
 enum AppRoutes {
@@ -52,5 +60,18 @@ extension RoutesDetails on AppRoutes {
         AppRoutes.main => const MainView(),
         AppRoutes.storeDetails => const StoreDetailsView(),
         AppRoutes.pageNotFound => const PageNotFoundView(),
+      };
+}
+
+extension RouteData on RouteSettings {
+  AppRoutes get route => switch (name) {
+        RoutesManager.splash => AppRoutes.splash,
+        RoutesManager.registration => AppRoutes.registration,
+        RoutesManager.login => AppRoutes.login,
+        RoutesManager.forgetPassword => AppRoutes.forgetPassword,
+        RoutesManager.main => AppRoutes.main,
+        RoutesManager.storeDetails => AppRoutes.storeDetails,
+        (_) => AppRoutes.pageNotFound,
+        // AppRoutes.pageNotFound => RoutesManager.pageNotFound,
       };
 }

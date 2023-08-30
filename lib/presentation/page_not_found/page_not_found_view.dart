@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_store_app/resources/string_manager.dart';
+import '../../resources/string_manager.dart';
 
 class PageNotFoundView extends StatelessWidget {
   const PageNotFoundView({super.key});

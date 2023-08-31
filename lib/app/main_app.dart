@@ -22,9 +22,7 @@ class _MainAppState extends State<MainApp> {
       theme: ThemeManager.getAppTheme(),
       onGenerateRoute: RoutesManager.generateRout,
       initialRoute: RoutesManager.splash,
-      home: const Center(
-        child: Text("Main App"),
-      ),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

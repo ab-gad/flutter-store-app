@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_store_app/presentation/onboarding/onboarding_view.dart';
 import '../presentation/forget_password/forget_password_view.dart';
 import '../presentation/login/login_view.dart';
 import '../presentation/registration/registration_view.dart';
@@ -12,6 +13,7 @@ abstract class RoutesManager {
   static const splash = '/';
   static const registration = '/registration';
   static const login = '/login';
+  static const onboarding = '/onboarding';
   static const forgetPassword = '/forgetPassword';
   static const main = '/main';
   static const storeDetails = '/storeDetails';
@@ -40,6 +42,7 @@ enum AppRoutes {
   main,
   storeDetails,
   pageNotFound,
+  onboarding,
 }
 
 extension RoutesDetails on AppRoutes {
@@ -50,6 +53,7 @@ extension RoutesDetails on AppRoutes {
         AppRoutes.forgetPassword => RoutesManager.forgetPassword,
         AppRoutes.main => RoutesManager.main,
         AppRoutes.storeDetails => RoutesManager.storeDetails,
+        AppRoutes.onboarding => RoutesManager.onboarding,
         AppRoutes.pageNotFound => RoutesManager.pageNotFound,
       };
   Widget get page => switch (this) {
@@ -59,6 +63,7 @@ extension RoutesDetails on AppRoutes {
         AppRoutes.forgetPassword => const ForgetPasswordView(),
         AppRoutes.main => const MainView(),
         AppRoutes.storeDetails => const StoreDetailsView(),
+        AppRoutes.onboarding => const OnboardingView(),
         AppRoutes.pageNotFound => const PageNotFoundView(),
       };
 }
@@ -71,6 +76,7 @@ extension RouteData on RouteSettings {
         RoutesManager.forgetPassword => AppRoutes.forgetPassword,
         RoutesManager.main => AppRoutes.main,
         RoutesManager.storeDetails => AppRoutes.storeDetails,
+        RoutesManager.onboarding => AppRoutes.onboarding,
         (_) => AppRoutes.pageNotFound,
         // AppRoutes.pageNotFound => RoutesManager.pageNotFound,
       };

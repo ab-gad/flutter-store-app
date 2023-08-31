@@ -34,3 +34,7 @@ flutter:
 
   assets:
     - assets\images\splash_logo.png
+    - assets\images\onboarding_logo1.svg
+    - assets\images\onboarding_logo2.svg
+    - assets\images\onboarding_logo3.svg
+    - assets\images\onboarding_logo4.svg

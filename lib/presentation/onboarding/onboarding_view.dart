@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_store_app/resources/assets_manager.dart';
 import 'package:flutter_store_app/resources/color_manager.dart';
+import 'package:flutter_store_app/resources/constants_dart.dart';
+import 'package:flutter_store_app/resources/routes_manager.dart';
 import 'package:flutter_store_app/resources/string_manager.dart';
 import 'package:flutter_store_app/resources/values_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -32,12 +34,15 @@ class _OnboardingViewState extends State<OnboardingView> {
         subTitle: StringManager.sliderSubTitle4,
         imageUrl: AppImages.onboardingLogoSvg4),
   ];
+  static const _initialPageIndex = 0;
 
-  final _pageController = PageController();
-  int _currentIndex = 0;
+  final _pageController = PageController(initialPage: _initialPageIndex);
+  late int _lastPageIndex;
+  int _currentPageIndex = _initialPageIndex;
 
   @override
   Widget build(BuildContext context) {
+    _lastPageIndex = _sliderObjects.length - 1;
     return Scaffold(
       backgroundColor: ColorManager.white,
       appBar: AppBar(
@@ -61,53 +66,59 @@ class _OnboardingViewState extends State<OnboardingView> {
           itemBuilder: _buildSliderPages,
           onPageChanged: (index) {
             setState(() {
-              _currentIndex = index;
+              _currentPageIndex = index;
             });
           },
         ),
       ),
-      bottomSheet: SizedBox(
-        height: AppValues.v100,
-        child: Column(
-          children: [
-            Align(
-              alignment: Alignment.centerRight,
-              child: TextButton(
-                onPressed: _skipOnboarding,
-                child: const Text(StringManager.skip),
+      bottomSheet: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Align(
+            alignment: Alignment.centerRight,
+            child: TextButton(
+              style: TextButton.styleFrom(
+                foregroundColor: ColorManager.primary,
+              ),
+              onPressed: _skipOnboarding,
+              child: Text(
+                StringManager.skip,
+                style: Theme.of(context).textTheme.titleMedium,
               ),
             ),
-            Container(
-              height: AppValues.v50,
-              color: ColorManager.primary,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  IconButton(
-                    onPressed: _goToNextPage,
-                    icon: Icon(
-                      Icons.arrow_back_ios,
-                      color: ColorManager.white,
-                      size: AppValues.v20,
-                    ),
+          ),
+          Container(
+            height: AppValues.v50,
+            color: ColorManager.primary,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                IconButton(
+                  splashRadius: AppValues.v1_5,
+                  onPressed: _goToPreviousPage,
+                  icon: Icon(
+                    Icons.arrow_back_ios,
+                    color: ColorManager.white,
+                    size: AppValues.v20,
                   ),
-                  Row(
-                    children: _buildNavigationCircles(),
+                ),
+                Row(
+                  children: _buildNavigationCircles(),
+                ),
+                IconButton(
+                  splashRadius: AppValues.v1_5,
+                  onPressed: _goToNextPage,
+                  icon: Icon(
+                    Icons.arrow_forward_ios,
+                    color: ColorManager.white,
+                    size: AppValues.v20,
                   ),
-                  IconButton(
-                    onPressed: _goToPreviousPage,
-                    icon: Icon(
-                      Icons.arrow_forward_ios,
-                      color: ColorManager.white,
-                      size: AppValues.v20,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -124,7 +135,7 @@ class _OnboardingViewState extends State<OnboardingView> {
         Padding(
           padding: const EdgeInsets.all(AppValues.v10),
           child: Icon(
-            _currentIndex == i ? Icons.circle_outlined : Icons.circle,
+            _currentPageIndex == i ? Icons.circle_outlined : Icons.circle,
             size: AppValues.v14,
             color: ColorManager.white,
           ),
@@ -135,9 +146,33 @@ class _OnboardingViewState extends State<OnboardingView> {
     return circlesList;
   }
 
-  void _goToNextPage() {}
-  void _goToPreviousPage() {}
-  void _skipOnboarding() {}
+  void _goToNextPage() {
+    final nextPageIndex = _currentPageIndex == _lastPageIndex
+        ? _initialPageIndex
+        : _currentPageIndex + 1;
+    _animateToPage(nextPageIndex);
+  }
+
+  void _animateToPage(int targetPageIndex) {
+    _pageController.animateToPage(
+      targetPageIndex,
+      duration: const Duration(
+        milliseconds: ConstantsManager.onboardingSliderAnimationDurationInMS,
+      ),
+      curve: Curves.ease,
+    );
+  }
+
+  void _goToPreviousPage() {
+    final previousPageIndex = _currentPageIndex == _initialPageIndex
+        ? _lastPageIndex
+        : _currentPageIndex - 1;
+    _animateToPage(previousPageIndex);
+  }
+
+  void _skipOnboarding() {
+    Navigator.pushReplacementNamed(context, RoutesManager.login);
+  }
 }
 
 class SliderObject {

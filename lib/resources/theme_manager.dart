@@ -59,10 +59,11 @@ abstract class ThemeManager {
         displayMedium:
             TextStyleManager.lightTextStyle(fontSize: AppFontSizes.s20),
         headlineMedium:
-            TextStyleManager.semiBoldTextStyle(fontSize: AppFontSizes.s18),
-        bodyMedium: TextStyleManager.regularTextStyle(),
-        bodySmall:
+            TextStyleManager.semiBoldTextStyle(fontSize: AppFontSizes.s16),
+        bodyMedium:
             TextStyleManager.regularTextStyle(fontSize: AppFontSizes.s12),
+        bodySmall:
+            TextStyleManager.regularTextStyle(fontSize: AppFontSizes.s10),
         bodyLarge:
             TextStyleManager.regularTextStyle(fontSize: AppFontSizes.s16),
       ),

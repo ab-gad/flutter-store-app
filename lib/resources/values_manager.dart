@@ -18,4 +18,8 @@ abstract class AppValues {
   static const v16 = 16.0;
   static const v18 = 18.0;
   static const v20 = 20.0;
+  static const v40 = 40.0;
+  static const v50 = 50.0;
+  static const v60 = 60.0;
+  static const v100 = 100.0;
 }

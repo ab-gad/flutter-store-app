@@ -12,6 +12,7 @@ abstract class FontConstants {
   static const bold = FontWeight.w700;
 
   // Font Sizes
+  static const s10 = 10.0;
   static const s12 = 12.0;
   static const s14 = 14.0;
   static const s16 = 16.0;
@@ -42,6 +43,7 @@ extension AppFontWeightsEnumValues on AppFontWeights {
 
 enum AppFontSizes {
   s12,
+  s10,
   s14,
   s16,
   s17,
@@ -52,6 +54,7 @@ enum AppFontSizes {
 extension AppFontSizesEnumValues on AppFontSizes {
   double get value {
     return switch (this) {
+      AppFontSizes.s10 => FontConstants.s10,
       AppFontSizes.s12 => FontConstants.s12,
       AppFontSizes.s14 => FontConstants.s14,
       AppFontSizes.s16 => FontConstants.s16,

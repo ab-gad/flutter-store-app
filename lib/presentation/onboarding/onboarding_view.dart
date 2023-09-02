@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_store_app/resources/assets_manager.dart';
-import 'package:flutter_store_app/resources/color_manager.dart';
-import 'package:flutter_store_app/resources/constants_dart.dart';
-import 'package:flutter_store_app/resources/routes_manager.dart';
-import 'package:flutter_store_app/resources/string_manager.dart';
-import 'package:flutter_store_app/resources/values_manager.dart';
+import '../../resources/assets_manager.dart';
+import '../../resources/color_manager.dart';
+import '../../resources/constants_dart.dart';
+import '../../resources/routes_manager.dart';
+import '../../resources/string_manager.dart';
+import '../../resources/values_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class OnboardingView extends StatefulWidget {

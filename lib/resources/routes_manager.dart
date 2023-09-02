@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_store_app/presentation/onboarding/onboarding_view.dart';
+import '../presentation/onboarding/onboarding_view.dart';
 import '../presentation/forget_password/forget_password_view.dart';
 import '../presentation/login/login_view.dart';
 import '../presentation/registration/registration_view.dart';

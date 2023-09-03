@@ -9,7 +9,8 @@
 ///padding that hold a different value from the m8 in the margin class
 ///
 abstract class AppValues {
-  static const v0 = 0;
+  static const v0 = 0.0;
+  static const v0_8 = 0.8;
   static const v1_5 = 1.5;
   static const v4 = 4.0;
   static const v8 = 8.0;

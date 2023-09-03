@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_store_app/presentation/onboarding/veiw/onboarding_bottom_sheet.dart';
-import 'package:flutter_store_app/presentation/onboarding/view_model/onboarding_view_model_state.dart';
+
 import '../../../resources/color_manager.dart';
 import '../../../resources/values_manager.dart';
-
 import '../view_model/onboarding_view_model.dart';
+import '../view_model/onboarding_view_model_state.dart';
+import 'onboarding_bottom_sheet.dart';
 import 'onboarding_slider_page.dart';
 
 class OnboardingView extends StatefulWidget {

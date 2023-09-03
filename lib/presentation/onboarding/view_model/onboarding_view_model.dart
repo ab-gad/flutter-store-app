@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_store_app/presentation/base/base_view_model.dart';
-import 'package:flutter_store_app/presentation/onboarding/view_model/onboarding_view_model_state.dart';
-import 'package:flutter_store_app/resources/constants_dart.dart';
-import 'package:flutter_store_app/resources/routes_manager.dart';
+import '../../base/base_view_model.dart';
+import 'onboarding_view_model_state.dart';
+import '../../../resources/constants_dart.dart';
+import '../../../resources/routes_manager.dart';
 
 import '../../../domain/models/onboarding_view_models.dart';
 import '../../../resources/assets_manager.dart';

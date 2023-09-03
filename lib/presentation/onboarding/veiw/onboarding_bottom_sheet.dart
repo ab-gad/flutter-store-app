@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_store_app/presentation/onboarding/view_model/onboarding_view_model.dart';
+import '../view_model/onboarding_view_model.dart';
 
 import '../../../resources/color_manager.dart';
 import '../../../resources/string_manager.dart';

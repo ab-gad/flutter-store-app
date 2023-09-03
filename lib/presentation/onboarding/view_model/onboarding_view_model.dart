@@ -24,6 +24,7 @@ class OnboardingViewModel extends BaseViewModel
 
   OnboardingViewModel(this._pageController);
 
+  @override
   Stream<OnboardingViewModelState> get stateStream =>
       _stateStreamController.stream;
 
@@ -77,6 +78,7 @@ class OnboardingViewModel extends BaseViewModel
     );
   }
 
+  @override
   StreamSink<OnboardingViewModelState> get _updateStream =>
       _stateStreamController.sink;
 

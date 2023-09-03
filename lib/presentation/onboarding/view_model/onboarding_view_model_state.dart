@@ -1,4 +1,4 @@
-import 'package:flutter_store_app/presentation/onboarding/veiw/onboarding_view.dart';
+import '../../../domain/models/onboarding_view_models.dart';
 
 class OnboardingViewModelState {
   final int currentIndex;

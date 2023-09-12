@@ -9,7 +9,7 @@ part of 'login_response.dart';
 LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) =>
     LoginResponse(
       status: json['status'] as int?,
-      message: json['msg'] as int?,
+      message: json['msg'] as String?,
       customer: json['customer'] == null
           ? null
           : CustomerResponse.fromJson(json['customer'] as Map<String, dynamic>),

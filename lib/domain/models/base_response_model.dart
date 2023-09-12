@@ -1,6 +1,6 @@
 class BaseResponseModel {
   final int status;
-  final int message;
+  final String message;
 
   BaseResponseModel({
     required this.status,

@@ -7,7 +7,7 @@ class BaseResponse {
   final int? status;
 
   @JsonKey(name: 'msg')
-  final int? message;
+  final String? message;
 
   BaseResponse({
     required this.status,

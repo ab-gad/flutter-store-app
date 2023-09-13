@@ -3,18 +3,23 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_store_app/app/app_constants.dart';
+import 'package:flutter_store_app/app/app_prefs_repository.dart';
 import 'package:flutter_store_app/data/network/network_constants.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioFactory {
-  Dio get getDio {
-    const headers = {
+  final AppPrefsRepository _appPrefs;
+
+  DioFactory(this._appPrefs);
+
+  Future<Dio> get getDio async {
+    final headers = {
       HttpHeaders.acceptHeader: Headers.jsonContentType,
       HttpHeaders.contentTypeHeader: Headers.jsonContentType,
       HttpHeaders.authorizationHeader: 'Token',
       // Based on user prefs, u can ask the server to provide u with specific lang document
       // u can send multiple langs
-      HttpHeaders.acceptLanguageHeader: AppConstants.englishCode,
+      HttpHeaders.acceptLanguageHeader: await _appPrefs.appLang,
     };
     final options = BaseOptions(
       baseUrl: AppConstants.baseApiUrl, // Optional bc we use retrofit

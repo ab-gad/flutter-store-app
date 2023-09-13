@@ -92,7 +92,7 @@ abstract class ThemeManager {
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: ColorManager.black,
+            color: ColorManager.primary,
             width: AppValues.v1_5,
           ),
           borderRadius: const BorderRadius.all(

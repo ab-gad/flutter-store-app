@@ -24,4 +24,17 @@ abstract class StringManager {
   static const sliderSubTitle3 =
       "Here we go !!, You will make it, Only 1 step away from greatness";
   static const sliderSubTitle4 = "Foooooooooooooooool XD";
+
+  // -----------------------------------------------
+  // ================[Login String]=================
+  // -----------------------------------------------
+  static const login = 'Login';
+  static const userName = 'User name';
+  static const password = 'Password';
+  static const userNameErr = 'Please enter your email or user name';
+  static const passwordErr = 'Pleas enter your password';
+  static const userNameHint = 'Type your email or user name';
+  static const passwordHint = 'Type your password';
+  static const forgotPassword = 'Forgot password ?';
+  static const notMember = 'Not a member? Sign up';
 }

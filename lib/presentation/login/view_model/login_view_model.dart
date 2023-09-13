@@ -6,8 +6,8 @@ import 'package:flutter_store_app/presentation/base/base_view_model.dart';
 
 class LoginViewModel
     implements BaseViewModel, LoginViewModelInput, LoginViewModelOutput {
-  final LoginUseCase _loginUseCase;
-  LoginViewModel(this._loginUseCase);
+  late LoginUseCase _loginUseCase;
+  LoginViewModel();
   //============================================
   //--------------[State]----------------------
   //============================================
@@ -15,6 +15,7 @@ class LoginViewModel
       StreamController.broadcast();
   final StreamController<String> _passwordStreamCtrl =
       StreamController.broadcast();
+  final StreamController _formStreamCtrl = StreamController.broadcast();
 
   final _loginRequestData = LoginRequest();
 
@@ -26,6 +27,9 @@ class LoginViewModel
 
   @override
   Sink<String> get _setUserName => _useNameStreamCtrl.sink;
+
+  @override
+  Sink<void> get _setFormValidity => _formStreamCtrl.sink;
 
   @override
   void login() async {
@@ -44,12 +48,14 @@ class LoginViewModel
   void setPassword(String password) {
     _setPassword.add(password);
     _loginRequestData.password = password;
+    _setFormValidity.add(null);
   }
 
   @override
   void setUserName(String userName) {
     _setUserName.add(userName);
     _loginRequestData.email = userName;
+    _setFormValidity.add(null);
   }
 
   @override
@@ -72,6 +78,8 @@ class LoginViewModel
   @override
   Stream<bool> get userNameValidity =>
       _useNameStreamCtrl.stream.map(_isUsernameValid);
+  @override
+  Stream<bool> get formValidity => _formStreamCtrl.stream.map(_isFormValid);
 
   //============================================
   //--------------[Helpers]--------------------
@@ -83,6 +91,11 @@ class LoginViewModel
   bool _isUsernameValid(String userName) {
     return userName.isNotEmpty && userName.length > 4;
   }
+
+  bool _isFormValid(_) {
+    return _isPasswordValid(_loginRequestData.password) &&
+        _isUsernameValid(_loginRequestData.email);
+  }
 }
 
 abstract class LoginViewModelInput {
@@ -90,6 +103,8 @@ abstract class LoginViewModelInput {
   Sink<String> get _setUserName;
   // ignore: unused_element
   Sink<String> get _setPassword;
+  // ignore: unused_element
+  Sink<void> get _setFormValidity;
 
   // We didn't expose stream sinks directly because we need to make additional operations
   void setUserName(String userName);
@@ -102,4 +117,5 @@ abstract class LoginViewModelInput {
 abstract class LoginViewModelOutput {
   Stream<bool> get userNameValidity;
   Stream<bool> get passwordValidity;
+  Stream<bool> get formValidity;
 }

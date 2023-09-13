@@ -5,6 +5,7 @@ abstract class StringManager {
   static const emptyString = "";
   static const pageNotFound = "Page Not Found";
   static const pageNotFoundMsg = "The page you are looking for is not found";
+  static const noConnection = "No internet connection";
 
   // -----------------------------------------------
   // ================[Onboarding View]==============

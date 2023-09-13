@@ -1,5 +1,7 @@
+import '../enums/response_status_enum.dart';
+
 class BaseResponseModel {
-  final int status;
+  final ResponseStatusEnum status;
   final String message;
 
   BaseResponseModel({

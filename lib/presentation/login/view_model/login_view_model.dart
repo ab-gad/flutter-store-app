@@ -6,8 +6,8 @@ import 'package:flutter_store_app/presentation/base/base_view_model.dart';
 
 class LoginViewModel
     implements BaseViewModel, LoginViewModelInput, LoginViewModelOutput {
-  late LoginUseCase _loginUseCase;
-  LoginViewModel();
+  final LoginUseCase _loginUseCase;
+  LoginViewModel(this._loginUseCase);
   //============================================
   //--------------[State]----------------------
   //============================================

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/app/extensions.dart';
+import 'package:flutter_store_app/app/service_locator.dart';
 import 'package:flutter_store_app/presentation/login/view_model/login_view_model.dart';
 import 'package:flutter_store_app/resources/assets_manager.dart';
 import 'package:flutter_store_app/resources/routes_manager.dart';
@@ -16,7 +17,7 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final _loginViewModel = LoginViewModel();
+  final _loginViewModel = sl<LoginViewModel>();
 
   final _formKey = GlobalKey<FormState>();
   final _userNameCtrl = TextEditingController();

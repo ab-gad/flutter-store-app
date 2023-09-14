@@ -12,7 +12,7 @@ class DioFactory {
 
   DioFactory(this._appPrefs);
 
-  Future<Dio> get getDio async {
+  Future<Dio> get dio async {
     final headers = {
       HttpHeaders.acceptHeader: Headers.jsonContentType,
       HttpHeaders.contentTypeHeader: Headers.jsonContentType,

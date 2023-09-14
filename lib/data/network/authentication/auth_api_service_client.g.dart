@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'api_service_client.dart';
+part of 'auth_api_service_client.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'api_service_client.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _ApiServiceClient implements ApiServiceClient {
-  _ApiServiceClient(
+class _AuthApiServiceClient implements AuthApiServiceClient {
+  _AuthApiServiceClient(
     this._dio, {
     this.baseUrl,
   }) {

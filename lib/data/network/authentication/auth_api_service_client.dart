@@ -3,11 +3,12 @@ import 'package:flutter_store_app/app/app_constants.dart';
 import 'package:flutter_store_app/data/responses/login_response.dart';
 import 'package:retrofit/http.dart';
 
-part 'api_service_client.g.dart';
+part 'auth_api_service_client.g.dart';
 
 @RestApi(baseUrl: AppConstants.baseApiUrl)
-abstract class ApiServiceClient {
-  factory ApiServiceClient(Dio dio, {String baseUrl}) = _ApiServiceClient;
+abstract class AuthApiServiceClient {
+  factory AuthApiServiceClient(Dio dio, {String baseUrl}) =
+      _AuthApiServiceClient;
 
   //! Without specifying the return type [LoginResponse] nothing will be generated
   @POST('customer/login')

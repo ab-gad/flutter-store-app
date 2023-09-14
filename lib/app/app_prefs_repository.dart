@@ -14,7 +14,7 @@ class AppPrefsRepositoryImpl implements AppPrefsRepository {
   @override
   Future<String> get appLang async {
     try {
-      var lang = await _localDataSource.appLang;
+      var lang = await _localDataSource.getAppLang();
       return lang;
     } on CashException {
       return AppConstants.defaultLangCode;

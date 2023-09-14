@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 const langKey = 'language';
 
 abstract class LocalDataSources {
-  Future<String> get appLang;
+  Future<String> getAppLang();
 }
 
 // Shared-preferences package implementor
@@ -14,12 +14,12 @@ class LocalDataSourcesImpl implements LocalDataSources {
   LocalDataSourcesImpl(this._prefs);
 
   @override
-  Future<String> get appLang {
+  Future<String> getAppLang() {
     var lang = _prefs.getString(langKey);
     if (lang != null) {
       return Future.value(lang);
     } else {
-      throw CashException().message = "Key not found";
+      throw CashException()..message = "Key not found";
     }
   }
 }

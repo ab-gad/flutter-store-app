@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:flutter_store_app/app/app_prefs_repository.dart';
+import 'package:flutter_store_app/app/service_locator.dart';
 import 'package:flutter_store_app/data/requests/login_request.dart';
 import 'package:flutter_store_app/domain/models/state_renderer_data.dart';
 import 'package:flutter_store_app/domain/usecases/login_usecase.dart';
@@ -9,8 +11,13 @@ import 'package:flutter_store_app/resources/routes_manager.dart';
 
 class LoginViewModel extends BaseViewModel
     implements LoginViewModelInput, LoginViewModelOutput {
+  //============================================
+  //--------------[Dependencies]----------------------
+  //============================================
   final LoginUseCase _loginUseCase;
   LoginViewModel(this._loginUseCase);
+  final _appPrefs = sl<AppPrefsRepository>();
+
   //============================================
   //--------------[State]----------------------
   //============================================
@@ -57,6 +64,7 @@ class LoginViewModel extends BaseViewModel
       print("-----------[SUCCESS]---------------");
       print(loginResponse.status);
       print(loginResponse.message);
+      _appPrefs.setIsUserLoggedIn(true);
       stateRendererSink.add(
         StateRendererData(
           stateType: StateRendererType.success,

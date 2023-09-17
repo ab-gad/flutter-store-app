@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_store_app/app/app_prefs_repository.dart';
 
+import '../../../app/service_locator.dart';
 import '../../../resources/color_manager.dart';
 import '../../../resources/values_manager.dart';
 import '../view_model/onboarding_view_model.dart';
@@ -19,9 +21,11 @@ class _OnboardingViewState extends State<OnboardingView> {
   final PageController _pageController =
       PageController(initialPage: OnboardingViewModel.initialPageIndex);
   late OnboardingViewModel _onboardingViewModel;
+  final _appPrefs = sl<AppPrefsRepository>();
 
   @override
   void initState() {
+    _appPrefs.setIsOnboardingViewed(true);
     _onboardingViewModel = OnboardingViewModel(_pageController);
     _onboardingViewModel.init();
 

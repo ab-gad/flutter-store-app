@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_store_app/app/app_prefs_repository.dart';
+import 'package:flutter_store_app/app/service_locator.dart';
 import '../../resources/assets_manager.dart';
 import '../../resources/color_manager.dart';
 import '../../resources/constants_dart.dart';
@@ -15,6 +17,7 @@ class SplashView extends StatefulWidget {
 
 class _SplashViewState extends State<SplashView> {
   late Timer _timer;
+  final _appPrefs = sl<AppPrefsRepository>();
 
   @override
   void initState() {
@@ -43,7 +46,7 @@ class _SplashViewState extends State<SplashView> {
       const Duration(
         seconds: ConstantsManager.splashDelayInSeconds,
       ),
-      _goToOnboardingView,
+      _goToAfterSplash,
     );
   }
 
@@ -53,5 +56,23 @@ class _SplashViewState extends State<SplashView> {
 
   void _goToOnboardingView() {
     Navigator.pushReplacementNamed(context, RoutesManager.onboarding);
+  }
+
+  void _goToLoginView() {
+    Navigator.pushReplacementNamed(context, RoutesManager.login);
+  }
+
+  void _goToMainView() {
+    Navigator.pushReplacementNamed(context, RoutesManager.main);
+  }
+
+  void _goToAfterSplash() async {
+    if (await _appPrefs.isUserLoggedIn) {
+      _goToMainView();
+    } else if (await _appPrefs.isOnboardingViewed) {
+      _goToLoginView();
+    } else {
+      _goToOnboardingView();
+    }
   }
 }

@@ -7,7 +7,9 @@ import 'package:flutter_store_app/data/network/dio_factory.dart';
 import 'package:flutter_store_app/data/network/network_info.dart';
 import 'package:flutter_store_app/data/repositories_impl/authentication_repository_impl.dart';
 import 'package:flutter_store_app/domain/repositories/authentication_repository.dart';
+import 'package:flutter_store_app/domain/usecases/forgot_password_usecase.dart';
 import 'package:flutter_store_app/domain/usecases/login_usecase.dart';
+import 'package:flutter_store_app/presentation/forget_password/view_model/forgot_password_view_model.dart';
 import 'package:flutter_store_app/presentation/login/view_model/login_view_model.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -39,6 +41,7 @@ Future<void> registerDependencies() async {
 
   // Used in [NetworkInfo] implementor
   sl.registerLazySingleton(() => InternetConnectionChecker());
+
   //*======================================================
   //* ----------------------[Auth]-------------------------
   //*======================================================
@@ -54,4 +57,9 @@ Future<void> registerDependencies() async {
   sl.registerFactory(() => LoginViewModel(sl()));
 
   sl.registerFactory(() => LoginUseCase(sl()));
+
+  //! Forget password
+  sl.registerFactory(() => ForgotPasswordViewModel(sl()));
+
+  sl.registerFactory(() => ForgotPasswordUseCase(sl()));
 }

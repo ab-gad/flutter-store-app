@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/app/extensions.dart';
 import 'package:flutter_store_app/app/service_locator.dart';
-import 'package:flutter_store_app/domain/models/state_renderer_data.dart';
-import 'package:flutter_store_app/presentation/common/enums/state_renderer_enums.dart';
-import 'package:flutter_store_app/presentation/common/widgets/state_renderer.dart';
+import 'package:flutter_store_app/presentation/common/widgets/state_renderer_stream.dart';
 import 'package:flutter_store_app/presentation/login/view_model/login_view_model.dart';
 import 'package:flutter_store_app/resources/assets_manager.dart';
 import 'package:flutter_store_app/resources/routes_manager.dart';
@@ -48,18 +46,10 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-        initialData: StateRendererData.content(),
-        stream: _loginViewModel.stateRendererStream,
-        builder: (context, snapshot) {
-          if (ModalRoute.of(context)?.isCurrent != true) {
-            Navigator.of(context).pop(true);
-          }
-          return StateRenderer(
-            stateRendererData: snapshot.data!,
-            content: _contentBuilder(),
-          );
-        });
+    return StateRendererStream(
+      stateRendererStream: _loginViewModel.stateRendererStream,
+      content: _contentBuilder(),
+    );
   }
 
   _contentBuilder() {

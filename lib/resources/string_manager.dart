@@ -32,7 +32,7 @@ abstract class StringManager {
   static const sliderSubTitle4 = "Foooooooooooooooool XD";
 
   // -----------------------------------------------
-  // ================[Login String]=================
+  // ================[Login Strings]================
   // -----------------------------------------------
   static const login = 'Login';
   static const userName = 'User name';
@@ -43,4 +43,13 @@ abstract class StringManager {
   static const passwordHint = 'Type your password';
   static const forgotPassword = 'Forgot password ?';
   static const notMember = 'Not a member? Sign up';
+
+  // -----------------------------------------------
+  // ================[Forgot password]===============
+  // -----------------------------------------------
+  static const resetPassword = 'Reset password';
+  static const didNotReceiveEmail = 'Didn\'t receive the email? Resend';
+  static const emailLabel = 'Email';
+  static const emailHint = 'Enter your email';
+  static const emailErr = 'Please enter a valid email address';
 }

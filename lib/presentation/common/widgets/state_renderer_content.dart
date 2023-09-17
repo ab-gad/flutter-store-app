@@ -30,19 +30,14 @@ class StateRendererContent extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           if (stateData.title.isNotEmpty)
-            Padding(
-              padding: const EdgeInsets.only(top: AppValues.v20),
-              child: Text(
-                stateData.title,
-                style: TextStyleManager.boldTextStyle(),
-              ),
+            Text(
+              stateData.title,
+              style: TextStyleManager.boldTextStyle(),
             ),
-          Padding(
-            padding: const EdgeInsets.only(top: AppValues.v20),
-            child: Text(
-              stateData.message,
-              style: TextStyleManager.regularTextStyle(),
-            ),
+          Text(
+            stateData.message,
+            style: TextStyleManager.regularTextStyle(),
+            textAlign: TextAlign.center,
           ),
           if (stateData.retryFunction != null)
             Padding(
@@ -52,7 +47,10 @@ class StateRendererContent extends StatelessWidget {
                 height: AppValues.v20 * 2,
                 child: ElevatedButton(
                   onPressed: stateData.retryFunction,
-                  child: const Text(StringManager.tryAgain),
+                  child: const Text(
+                    StringManager.tryAgain,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
             ),

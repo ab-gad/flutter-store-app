@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_store_app/app/app_constants.dart';
+import 'package:flutter_store_app/data/responses/forgot_password_response.dart';
 import 'package:flutter_store_app/data/responses/login_response.dart';
 import 'package:retrofit/http.dart';
 
@@ -17,5 +18,10 @@ abstract class AuthApiServiceClient {
     //! If the name that u need to send with body is different from the param name, specify the request param name in decorator function
     @Field() String email,
     @Field() String password,
+  );
+
+  @POST('customer/forgotPassword')
+  Future<ForgotPasswordResponse> forgotPassword(
+    @Field() String email,
   );
 }

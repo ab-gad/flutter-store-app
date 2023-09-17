@@ -5,8 +5,10 @@ import 'package:flutter_store_app/app/failures.dart';
 import 'package:flutter_store_app/data/data_sources/authentication_remote_data_source.dart';
 import 'package:flutter_store_app/data/mappers/login_mappers.dart';
 import 'package:flutter_store_app/data/network/network_info.dart';
+import 'package:flutter_store_app/data/requests/fogot_password_request.dart';
 import 'package:flutter_store_app/data/requests/login_request.dart';
 import 'package:flutter_store_app/domain/enums/response_status_enum.dart';
+import 'package:flutter_store_app/domain/models/forgot_password_response_moder.dart';
 import 'package:flutter_store_app/domain/models/login_models.dart';
 import 'package:flutter_store_app/domain/repositories/authentication_repository.dart';
 import 'package:flutter_store_app/resources/string_manager.dart';
@@ -31,6 +33,33 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
             NetworkFailure(
                 message: response.message.orEmpty(),
                 code: response.status.orZero()),
+          );
+        }
+      } else {
+        return Left(NoConnectionFailure(message: StringManager.noConnection));
+      }
+    } on NetworkException catch (err) {
+      return Left(NetworkFailure(message: err.message, code: 1));
+    } catch (e) {
+      return Left(UnknownFailure(message: StringManager.noConnection));
+    }
+  }
+
+  @override
+  Future<Either<Failure, ForgotPasswordResponseModel>> forgotPassword(
+      ForgotPasswordRequest forgotPasswordData) async {
+    try {
+      if (await _netWorkInfo.isConnected) {
+        final response =
+            await _remoteDataSource.forgotPassword(forgotPasswordData);
+        if (response.status == ResponseStatusEnum.success.statusCode) {
+          return Right(response.toDomain());
+        } else {
+          return Left(
+            NetworkFailure(
+              message: response.message.orEmpty(),
+              code: response.status.orZero(),
+            ),
           );
         }
       } else {

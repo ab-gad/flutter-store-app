@@ -6,6 +6,12 @@ abstract class StringManager {
   static const pageNotFound = "Page Not Found";
   static const pageNotFoundMsg = "The page you are looking for is not found";
   static const noConnection = "No internet connection";
+  static const loading = "Loading...";
+  static const unknownErr = "Something wrong happened!, Please try again later";
+  static const ok = "Ok";
+  static const success = "Success operation";
+  static const noData = "You have no data at the moment";
+  static const tryAgain = "Try again";
 
   // -----------------------------------------------
   // ================[Onboarding View]==============

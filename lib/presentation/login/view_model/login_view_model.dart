@@ -1,11 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter_store_app/data/requests/login_request.dart';
+import 'package:flutter_store_app/domain/models/state_renderer_data.dart';
 import 'package:flutter_store_app/domain/usecases/login_usecase.dart';
 import 'package:flutter_store_app/presentation/base/base_view_model.dart';
+import 'package:flutter_store_app/presentation/common/enums/state_renderer_enums.dart';
+import 'package:flutter_store_app/resources/routes_manager.dart';
 
-class LoginViewModel
-    implements BaseViewModel, LoginViewModelInput, LoginViewModelOutput {
+class LoginViewModel extends BaseViewModel
+    implements LoginViewModelInput, LoginViewModelOutput {
   final LoginUseCase _loginUseCase;
   LoginViewModel(this._loginUseCase);
   //============================================
@@ -33,14 +36,34 @@ class LoginViewModel
 
   @override
   void login() async {
+    stateRendererSink.add(
+      StateRendererData(
+        stateType: StateRendererType.loading,
+        stateContainer: StateRendererContainer.popup,
+      ),
+    );
     var res = await _loginUseCase(_loginRequestData);
     res.fold((failure) {
       print("-----------[FAILURE]---------------");
       print(failure.message);
+      stateRendererSink.add(
+        StateRendererData(
+          stateType: StateRendererType.failure,
+          stateContainer: StateRendererContainer.popup,
+          message: failure.message,
+        ),
+      );
     }, (loginResponse) {
       print("-----------[SUCCESS]---------------");
       print(loginResponse.status);
       print(loginResponse.message);
+      stateRendererSink.add(
+        StateRendererData(
+          stateType: StateRendererType.success,
+          stateContainer: StateRendererContainer.fullScreen,
+          redirectRoute: AppRoutes.main,
+        ),
+      );
     });
   }
 
@@ -62,11 +85,12 @@ class LoginViewModel
   void dispose() {
     _passwordStreamCtrl.close();
     _useNameStreamCtrl.close();
+    super.dispose();
   }
 
   @override
   void init() {
-    // TODO: implement init
+    stateRendererSink.add(StateRendererData.content());
   }
 
   //============================================

@@ -7,6 +7,7 @@ import 'package:flutter_store_app/data/mappers/login_mappers.dart';
 import 'package:flutter_store_app/data/network/network_info.dart';
 import 'package:flutter_store_app/data/requests/fogot_password_request.dart';
 import 'package:flutter_store_app/data/requests/login_request.dart';
+import 'package:flutter_store_app/data/requests/register_request.dart';
 import 'package:flutter_store_app/domain/enums/response_status_enum.dart';
 import 'package:flutter_store_app/domain/models/forgot_password_response_moder.dart';
 import 'package:flutter_store_app/domain/models/login_models.dart';
@@ -60,6 +61,31 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
               message: response.message.orEmpty(),
               code: response.status.orZero(),
             ),
+          );
+        }
+      } else {
+        return Left(NoConnectionFailure(message: StringManager.noConnection));
+      }
+    } on NetworkException catch (err) {
+      return Left(NetworkFailure(message: err.message, code: 1));
+    } catch (e) {
+      return Left(UnknownFailure(message: StringManager.noConnection));
+    }
+  }
+
+  @override
+  Future<Either<Failure, LoginResponseModel>> register(
+      RegisterRequest registerData) async {
+    try {
+      if (await _netWorkInfo.isConnected) {
+        final response = await _remoteDataSource.register(registerData);
+        if (response.status == ResponseStatusEnum.success.statusCode) {
+          return Right(response.toDomain());
+        } else {
+          return Left(
+            NetworkFailure(
+                message: response.message.orEmpty(),
+                code: response.status.orZero()),
           );
         }
       } else {

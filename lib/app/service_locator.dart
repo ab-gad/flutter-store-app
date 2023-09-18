@@ -9,8 +9,10 @@ import 'package:flutter_store_app/data/repositories_impl/authentication_reposito
 import 'package:flutter_store_app/domain/repositories/authentication_repository.dart';
 import 'package:flutter_store_app/domain/usecases/forgot_password_usecase.dart';
 import 'package:flutter_store_app/domain/usecases/login_usecase.dart';
+import 'package:flutter_store_app/domain/usecases/register_usecase.dart';
 import 'package:flutter_store_app/presentation/forget_password/view_model/forgot_password_view_model.dart';
 import 'package:flutter_store_app/presentation/login/view_model/login_view_model.dart';
+import 'package:flutter_store_app/presentation/registration/view_model/registeration_view_model.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -52,6 +54,11 @@ Future<void> registerDependencies() async {
       () => AuthenticationRemoteDataSourceImpl(retrofitServiceClient: sl()));
 
   sl.registerLazySingleton(() => AuthApiServiceClient(dio));
+
+  //! Registration
+  sl.registerFactory(() => RegistrationViewModel(registerUserCase: sl()));
+
+  sl.registerFactory(() => RegisterUseCase(sl()));
 
   //! Login
   sl.registerFactory(() => LoginViewModel(sl()));

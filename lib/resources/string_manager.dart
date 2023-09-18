@@ -52,4 +52,19 @@ abstract class StringManager {
   static const emailLabel = 'Email';
   static const emailHint = 'Enter your email';
   static const emailErr = 'Please enter a valid email address';
+
+  // -----------------------------------------------
+  // ================[Registration]=================
+  // -----------------------------------------------
+  static const register = 'Register';
+  static const chooseFromGallery = 'Choose photo from gallery';
+  static const takeAPicture = 'Take a picture';
+  static const alreadyHaveAccount = 'Already have account? Login';
+  static const phoneNoLabel = 'Phone Number';
+  static const phoneNoHint = 'Enter your phone number';
+  static const phoneNoErr = 'Please enter a valid phone number';
+
+  static const profilePictureLabel = 'Profile picture';
+  static const profilePictureHint = 'Enter your profile picture';
+  static const profilePictureErr = 'Please enter a valid profile picture';
 }

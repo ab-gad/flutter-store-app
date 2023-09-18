@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../presentation/onboarding/view/onboarding_view.dart';
 import '../presentation/forget_password/view/forget_password_view.dart';
 import '../presentation/login/view/login_view.dart';
-import '../presentation/registration/registration_view.dart';
+import '../presentation/registration/view/registration_view.dart';
 import '../presentation/splash/splash_view.dart';
 
 import '../presentation/main/main_view.dart';

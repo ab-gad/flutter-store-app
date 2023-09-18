@@ -24,4 +24,14 @@ abstract class AuthApiServiceClient {
   Future<ForgotPasswordResponse> forgotPassword(
     @Field() String email,
   );
+
+  @POST('customer/register')
+  Future<LoginResponse> register(
+    @Field('email') String email,
+    @Field('user_name') String userName,
+    @Field('password') String password,
+    @Field('mobile_number') String mobilNumber,
+    @Field('profile_picture') String profilePicture,
+    @Field('country_mobile_code') String countryMobileCode,
+  );
 }

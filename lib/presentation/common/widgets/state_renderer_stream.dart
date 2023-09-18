@@ -22,7 +22,7 @@ class StateRendererStream extends StatelessWidget {
       builder: (context, snapshot) {
         if (ModalRoute.of(context)?.isCurrent != true) {
           SchedulerBinding.instance.addPostFrameCallback((_) {
-            Navigator.of(context).pop(true);
+            // Navigator.of(context).pop(true);
           });
         }
         return StateRenderer(

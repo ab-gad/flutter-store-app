@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/app/service_locator.dart';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'app/main_app.dart';
 
 void main() async {
@@ -11,5 +12,8 @@ void main() async {
   // make sure to use [WidgetsFlutterBinding.ensureInitialized()]
   WidgetsFlutterBinding.ensureInitialized();
   await registerDependencies();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MainApp());
 }

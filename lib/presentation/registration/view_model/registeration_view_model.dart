@@ -1,13 +1,16 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flutter_store_app/app/app_prefs_repository.dart';
 import 'package:flutter_store_app/app/app_regex.dart';
 import 'package:flutter_store_app/app/extensions.dart';
+import 'package:flutter_store_app/app/service_locator.dart';
 import 'package:flutter_store_app/data/requests/register_request.dart';
 import 'package:flutter_store_app/domain/models/state_renderer_data.dart';
 import 'package:flutter_store_app/domain/usecases/register_usecase.dart';
 import 'package:flutter_store_app/presentation/base/base_view_model.dart';
 import 'package:flutter_store_app/presentation/common/enums/state_renderer_enums.dart';
+import 'package:flutter_store_app/resources/routes_manager.dart';
 import 'package:flutter_store_app/resources/string_manager.dart';
 
 class RegistrationViewModel extends BaseViewModel
@@ -15,10 +18,13 @@ class RegistrationViewModel extends BaseViewModel
   //=====================================
   //------------[dependencies]-----------
   //=====================================
+  //! Dependency injection
   final RegisterUseCase registerUserCase;
 
   RegistrationViewModel({required this.registerUserCase});
 
+  //! Service locator
+  final _appPrefs = sl<AppPrefsRepository>();
   //=====================================
   //----------------[State]--------------
   //=====================================
@@ -79,12 +85,14 @@ class RegistrationViewModel extends BaseViewModel
         );
       },
       (response) {
+        _appPrefs.setIsUserLoggedIn(true);
         stateRendererSink.add(
           StateRendererData(
             stateType: StateRendererType.success,
-            stateContainer: StateRendererContainer.popup,
+            stateContainer: StateRendererContainer.fullScreen,
             title: StringManager.success,
             message: response.message,
+            redirectRoute: AppRoutes.main,
           ),
         );
       },

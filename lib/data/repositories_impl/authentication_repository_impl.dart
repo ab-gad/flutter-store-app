@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_store_app/app/exceptions.dart';
 import 'package:flutter_store_app/app/extensions.dart';
 import 'package:flutter_store_app/app/failures.dart';
-import 'package:flutter_store_app/data/data_sources/authentication_remote_data_source.dart';
+import 'package:flutter_store_app/data/data_sources/remote/authentication_remote_data_source.dart';
 import 'package:flutter_store_app/data/mappers/login_mappers.dart';
 import 'package:flutter_store_app/data/network/network_info.dart';
 import 'package:flutter_store_app/data/requests/fogot_password_request.dart';

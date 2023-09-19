@@ -1,12 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_store_app/app/app_prefs_repository.dart';
-import 'package:flutter_store_app/data/data_sources/authentication_remote_data_source.dart';
-import 'package:flutter_store_app/data/data_sources/local_data_source.dart';
+import 'package:flutter_store_app/data/data_sources/remote/authentication_remote_data_source.dart';
+import 'package:flutter_store_app/data/data_sources/local/local_data_source.dart';
+import 'package:flutter_store_app/data/data_sources/remote/main_remote_data_source.dart';
 import 'package:flutter_store_app/data/network/authentication/auth_api_service_client.dart';
 import 'package:flutter_store_app/data/network/dio_factory.dart';
 import 'package:flutter_store_app/data/network/network_info.dart';
 import 'package:flutter_store_app/data/repositories_impl/authentication_repository_impl.dart';
+import 'package:flutter_store_app/data/repositories_impl/main_repository_impl.dart';
 import 'package:flutter_store_app/domain/repositories/authentication_repository.dart';
+import 'package:flutter_store_app/domain/repositories/main_repository.dart';
 import 'package:flutter_store_app/domain/usecases/forgot_password_usecase.dart';
 import 'package:flutter_store_app/domain/usecases/login_usecase.dart';
 import 'package:flutter_store_app/domain/usecases/register_usecase.dart';
@@ -16,6 +19,8 @@ import 'package:flutter_store_app/presentation/registration/view_model/registera
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../data/network/main/main_api_service_client.dart';
 
 final sl = GetIt.instance;
 
@@ -44,6 +49,18 @@ Future<void> registerDependencies() async {
   // Used in [NetworkInfo] implementor
   sl.registerLazySingleton(() => InternetConnectionChecker());
 
+  //*======================================================
+  //* ----------------------[Main]-------------------------
+  //*======================================================
+  sl.registerLazySingleton<MainRepository>(
+      () => MainRepositoryImpl(mainRemoteDataSource: sl(), networkInfo: sl()));
+
+  sl.registerLazySingleton<MainRemoteDataSource>(
+      () => MainRemoteDataSourceImpl(mainApiServiceClient: sl()));
+
+  sl.registerLazySingleton(() => MainApiServiceClient(dio));
+
+  //! Home page
   //*======================================================
   //* ----------------------[Auth]-------------------------
   //*======================================================

@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_store_app/app/app_constants.dart';
 import 'package:flutter_store_app/app/exceptions.dart';
 import 'package:flutter_store_app/app/failures.dart';
-import 'package:flutter_store_app/data/data_sources/local_data_source.dart';
+import 'package:flutter_store_app/data/data_sources/local/local_data_source.dart';
 
 abstract class AppPrefsRepository {
   Future<String> get appLang;

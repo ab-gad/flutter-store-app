@@ -67,4 +67,12 @@ abstract class StringManager {
   static const profilePictureLabel = 'Profile picture';
   static const profilePictureHint = 'Enter your profile picture';
   static const profilePictureErr = 'Please enter a valid profile picture';
+
+  // -----------------------------------------------
+  // ===================[Main]====================
+  // -----------------------------------------------
+  static const home = 'Home';
+  static const search = 'Search';
+  static const notification = 'Notification';
+  static const settings = 'Settings';
 }

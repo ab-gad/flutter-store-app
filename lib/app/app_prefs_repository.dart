@@ -61,13 +61,13 @@ class AppPrefsRepositoryImpl implements AppPrefsRepository {
   }
 
   @override
-  setIsUserLoggedIn(bool isOnboardingViewed) async {
+  setIsUserLoggedIn(bool isUserLoggedIn) async {
     try {
       var cachingSuccess =
-          await _localDataSource.setIsOnboardingViewed(isOnboardingViewed);
+          await _localDataSource.setIsUserLoggedIn(isUserLoggedIn);
       return Right(cachingSuccess);
     } on CashException {
-      return Left(CashFailure(message: 'Can not cash is onboarding viewed'));
+      return Left(CashFailure(message: 'Can not cash isUserLoggedIn'));
     }
   }
 }

@@ -4,17 +4,17 @@ import 'package:flutter_store_app/domain/models/state_renderer_data.dart';
 
 abstract class BaseViewModel
     implements BaseViewModelInput, BaseViewModelOutput {
-  final StreamController<StateRendererData> stateRenderer = StreamController();
+  final StreamController<StateRendererData> _stateRenderer = StreamController();
 
   @override
-  Sink<StateRendererData> get stateRendererSink => stateRenderer.sink;
+  Sink<StateRendererData> get stateRendererSink => _stateRenderer.sink;
 
   @override
-  Stream<StateRendererData> get stateRendererStream => stateRenderer.stream;
+  Stream<StateRendererData> get stateRendererStream => _stateRenderer.stream;
 
   @override
   void dispose() {
-    stateRenderer.close();
+    _stateRenderer.close();
   }
 }
 

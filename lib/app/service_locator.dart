@@ -12,9 +12,11 @@ import 'package:flutter_store_app/domain/repositories/authentication_repository.
 import 'package:flutter_store_app/domain/repositories/main_repository.dart';
 import 'package:flutter_store_app/domain/usecases/forgot_password_usecase.dart';
 import 'package:flutter_store_app/domain/usecases/login_usecase.dart';
+import 'package:flutter_store_app/domain/usecases/main/get_home_data_usecase.dart';
 import 'package:flutter_store_app/domain/usecases/register_usecase.dart';
 import 'package:flutter_store_app/presentation/forget_password/view_model/forgot_password_view_model.dart';
 import 'package:flutter_store_app/presentation/login/view_model/login_view_model.dart';
+import 'package:flutter_store_app/presentation/main/pages/home/veiw_model/home_view_model.dart';
 import 'package:flutter_store_app/presentation/registration/view_model/registeration_view_model.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -61,6 +63,9 @@ Future<void> registerDependencies() async {
   sl.registerLazySingleton(() => MainApiServiceClient(dio));
 
   //! Home page
+  sl.registerFactory(() => GetHomeDataUseCase(mainRepository: sl()));
+
+  sl.registerFactory(() => HomeViewModel(getHomeDataUseCase: sl()));
   //*======================================================
   //* ----------------------[Auth]-------------------------
   //*======================================================

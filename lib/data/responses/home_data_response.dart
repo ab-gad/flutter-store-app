@@ -23,7 +23,7 @@ class HomeDataGetResponse extends BaseResponse {
     List<BannerModel> banners = (data?.banners?.isNotEmpty ?? false)
         ? data!.banners!
             .map((banner) => BannerModel(
-                  id: banner.id ?? '',
+                  id: banner.id ?? 0,
                   title: banner.title ?? '',
                   image: banner.image ?? '',
                   link: banner.link ?? "",
@@ -33,7 +33,7 @@ class HomeDataGetResponse extends BaseResponse {
     List<HomeDataModelItem> services = (data?.banners?.isNotEmpty ?? false)
         ? data!.banners!
             .map((banner) => HomeDataModelItem(
-                  id: banner.id ?? '',
+                  id: banner.id ?? 0,
                   title: banner.title ?? '',
                   image: banner.image ?? '',
                 ))
@@ -42,7 +42,7 @@ class HomeDataGetResponse extends BaseResponse {
     List<HomeDataModelItem> stores = (data?.banners?.isNotEmpty ?? false)
         ? data!.banners!
             .map((banner) => HomeDataModelItem(
-                  id: banner.id ?? '',
+                  id: banner.id ?? 0,
                   title: banner.title ?? '',
                   image: banner.image ?? '',
                 ))
@@ -78,7 +78,7 @@ class HomeDataResponseItem {
 
   Map<String, dynamic> toJson() => _$HomeDataResponseItemToJson(this);
 
-  final String? id;
+  final int? id;
   final String? title;
   final String? image;
 

@@ -46,7 +46,7 @@ Map<String, dynamic> _$HomeDataResponseToJson(HomeDataResponse instance) =>
 HomeDataResponseItem _$HomeDataResponseItemFromJson(
         Map<String, dynamic> json) =>
     HomeDataResponseItem(
-      id: json['id'] as String?,
+      id: json['id'] as int?,
       title: json['title'] as String?,
       image: json['image'] as String?,
     );
@@ -61,7 +61,7 @@ Map<String, dynamic> _$HomeDataResponseItemToJson(
 
 BannerResponse _$BannerResponseFromJson(Map<String, dynamic> json) =>
     BannerResponse(
-      id: json['id'] as String?,
+      id: json['id'] as int?,
       title: json['title'] as String?,
       image: json['image'] as String?,
       link: json['link'] as String?,

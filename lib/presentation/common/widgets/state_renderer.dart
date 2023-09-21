@@ -40,12 +40,10 @@ class StateRenderer extends StatelessWidget {
       return content;
     }
     if (stateRendererData.stateContainer == StateRendererContainer.fullScreen) {
-      return Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(AppValues.v20),
-          child: StateRendererContent(
-            stateData: _getStateRendererData(),
-          ),
+      return Padding(
+        padding: const EdgeInsets.all(AppValues.v20),
+        child: StateRendererContent(
+          stateData: _getStateRendererData(),
         ),
       );
     } else {
@@ -91,21 +89,25 @@ class StateRenderer extends StatelessWidget {
           imageUrl: AppImages.loadingStateJsonImage,
           message: stateRendererData.message ?? StringManager.loading,
           title: stateRendererData.title.orEmpty(),
+          retryFunction: stateRendererData.retryFunction,
         ),
       StateRendererType.failure => StateRendererContentData(
           imageUrl: AppImages.errorStateJsonImage,
           message: stateRendererData.message ?? StringManager.unknownErr,
           title: stateRendererData.title.orEmpty(),
+          retryFunction: stateRendererData.retryFunction,
         ),
       StateRendererType.success => StateRendererContentData(
           imageUrl: AppImages.successStateJsonImage,
           message: stateRendererData.message ?? StringManager.success,
           title: stateRendererData.title.orEmpty(),
+          retryFunction: stateRendererData.retryFunction,
         ),
       StateRendererType.empty => StateRendererContentData(
           imageUrl: AppImages.emptyStateJsonImage,
           message: stateRendererData.message ?? StringManager.noData,
           title: stateRendererData.title.orEmpty(),
+          retryFunction: stateRendererData.retryFunction,
         ),
     };
   }

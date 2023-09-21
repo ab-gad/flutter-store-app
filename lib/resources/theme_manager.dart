@@ -67,7 +67,13 @@ abstract class ThemeManager {
         bodyLarge:
             TextStyleManager.regularTextStyle(fontSize: AppFontSizes.s16),
         titleMedium: TextStyleManager.mediumTextStyle(
-            fontSize: AppFontSizes.s16, fontColor: AppColors.primary),
+          fontSize: AppFontSizes.s16,
+          fontColor: AppColors.primary,
+        ),
+        titleLarge: TextStyleManager.boldTextStyle(
+          fontSize: AppFontSizes.s16,
+          fontColor: AppColors.primary,
+        ),
       ),
 
       // Inputs

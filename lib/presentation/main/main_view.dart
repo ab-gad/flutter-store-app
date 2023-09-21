@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_store_app/presentation/main/pages/home/home_page.dart';
+import 'package:flutter_store_app/presentation/main/pages/home/view/home_page.dart';
 import 'package:flutter_store_app/presentation/main/pages/notification/notification_page.dart';
 import 'package:flutter_store_app/presentation/main/pages/search/search_page.dart';
 import 'package:flutter_store_app/presentation/main/pages/settings/settings_page.dart';

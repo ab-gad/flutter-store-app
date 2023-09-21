@@ -79,4 +79,8 @@ abstract class StringManager {
   static const banners = 'Banners';
   static const stores = 'Stores';
   static const services = 'Services';
+  // ===================[Store details]====================
+  static const storeDetails = 'Store details';
+  static const details = 'Details';
+  static const about = 'About';
 }

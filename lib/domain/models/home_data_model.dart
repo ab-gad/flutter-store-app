@@ -32,3 +32,15 @@ class BannerModel extends HomeDataModelItem {
     required this.link,
   });
 }
+
+class HomeStoreItemDetailsModel {
+  final String details;
+  final String services;
+  final String about;
+
+  HomeStoreItemDetailsModel({
+    required this.details,
+    required this.services,
+    required this.about,
+  });
+}

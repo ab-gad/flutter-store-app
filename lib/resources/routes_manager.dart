@@ -7,7 +7,7 @@ import '../presentation/splash/splash_view.dart';
 
 import '../presentation/main/main_view.dart';
 import '../presentation/page_not_found/page_not_found_view.dart';
-import '../presentation/store_details/store_details_view.dart';
+import '../presentation/store_details/view/store_details_view.dart';
 
 abstract class RoutesManager {
   static const splash = '/';
@@ -20,7 +20,10 @@ abstract class RoutesManager {
   static const pageNotFound = '/404';
 
   static Route<dynamic> generateRout(RouteSettings settings) {
-    return MaterialPageRoute(builder: (_) => settings.route.page);
+    return MaterialPageRoute(
+      builder: (_) => settings.route.page,
+      settings: settings,
+    );
   }
 
   static get undefinedRout =>

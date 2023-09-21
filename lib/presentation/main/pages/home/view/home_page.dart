@@ -208,7 +208,10 @@ class _HomePageState extends State<HomePage> {
         height: (MediaQuery.of(context).size.width - 30) / 2,
         child: InkWell(
           onTap: () {
-            Navigator.of(context).pushNamed(RoutesManager.storeDetails);
+            Navigator.of(context).pushNamed(
+              RoutesManager.storeDetails,
+              arguments: store,
+            );
           },
           child: Image.network(
             store.image,

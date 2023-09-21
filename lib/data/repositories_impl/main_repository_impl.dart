@@ -60,4 +60,45 @@ class MainRepositoryImpl extends MainRepository {
       }
     }
   }
+
+  @override
+  Future<Either<Failure, HomeStoreItemDetailsModel>> getHomeStoreDetails(
+      int storeId) async {
+    // Try to get data from cash first (if there is valid data exist)
+    // If no valid data, then fetch the data from remote
+    try {
+      final validCashedData =
+          await _mainLocalDataSource.getHomeStoreDetails(storeId);
+      return Right(validCashedData.toDomain());
+    } on CashException {
+      try {
+        if (await _networkInfo.isConnected) {
+          final response =
+              await _mainRemoteDataSource.getHomeStoreDetails(storeId);
+          if (response.status == ResponseStatusEnum.success.statusCode) {
+            _mainLocalDataSource.setHomeStoreDetails(storeId, response);
+            return Right(response.toDomain());
+          } else {
+            return Left(
+              NetworkFailure(
+                message: response.message ?? "",
+                code: response.status ?? ResponseStatusEnum.failure.statusCode,
+              ),
+            );
+          }
+        } else {
+          return Left(NoConnectionFailure(message: StringManager.noConnection));
+        }
+      } on NetworkException catch (err) {
+        return Left(NetworkFailure(
+          message: err.message,
+          code: ResponseStatusEnum.failure.statusCode,
+        ));
+      } catch (e) {
+        return Left(UnknownFailure(
+          message: StringManager.noConnection,
+        ));
+      }
+    }
+  }
 }

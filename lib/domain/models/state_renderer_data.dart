@@ -3,6 +3,7 @@ import 'package:flutter_store_app/resources/routes_manager.dart';
 
 import '../../presentation/common/enums/state_renderer_enums.dart';
 
+@immutable
 class StateRendererData {
   final StateRendererType stateType;
   final StateRendererContainer stateContainer;
@@ -11,7 +12,7 @@ class StateRendererData {
   final AppRoutes? redirectRoute;
   final VoidCallback? retryFunction;
 
-  StateRendererData({
+  const StateRendererData({
     required this.stateType,
     required this.stateContainer,
     this.message,
@@ -21,9 +22,16 @@ class StateRendererData {
   });
 
   factory StateRendererData.content() {
-    return StateRendererData(
+    return const StateRendererData(
       stateType: StateRendererType.empty,
       stateContainer: StateRendererContainer.content,
+    );
+  }
+
+  factory StateRendererData.loading() {
+    return const StateRendererData(
+      stateType: StateRendererType.loading,
+      stateContainer: StateRendererContainer.fullScreen,
     );
   }
 }

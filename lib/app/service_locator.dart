@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_store_app/app/app_prefs_repository.dart';
+import 'package:flutter_store_app/data/data_sources/local/main_local_data_source.dart';
 import 'package:flutter_store_app/data/data_sources/remote/authentication_remote_data_source.dart';
 import 'package:flutter_store_app/data/data_sources/local/local_data_source.dart';
 import 'package:flutter_store_app/data/data_sources/remote/main_remote_data_source.dart';
@@ -54,11 +55,17 @@ Future<void> registerDependencies() async {
   //*======================================================
   //* ----------------------[Main]-------------------------
   //*======================================================
-  sl.registerLazySingleton<MainRepository>(
-      () => MainRepositoryImpl(mainRemoteDataSource: sl(), networkInfo: sl()));
+  sl.registerLazySingleton<MainRepository>(() => MainRepositoryImpl(
+        mainRemoteDataSource: sl(),
+        mainLocalDataSource: sl(),
+        networkInfo: sl(),
+      ));
 
   sl.registerLazySingleton<MainRemoteDataSource>(
       () => MainRemoteDataSourceImpl(mainApiServiceClient: sl()));
+
+  sl.registerLazySingleton<MainLocalDataSource>(
+      () => MainLocalDataSourceImpl());
 
   sl.registerLazySingleton(() => MainApiServiceClient(dio));
 

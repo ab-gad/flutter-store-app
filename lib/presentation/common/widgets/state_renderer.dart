@@ -37,7 +37,7 @@ class StateRenderer extends StatelessWidget {
           stateRendererData.redirectRoute!.path,
         );
       });
-      return content;
+      return const SizedBox.shrink();
     }
     if (stateRendererData.stateContainer == StateRendererContainer.fullScreen) {
       return Padding(

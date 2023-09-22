@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:flutter_store_app/app/app_prefs_repository.dart';
 import 'package:flutter_store_app/app/app_regex.dart';
 import 'package:flutter_store_app/app/extensions.dart';
-import 'package:flutter_store_app/app/service_locator.dart';
 import 'package:flutter_store_app/data/requests/register_request.dart';
 import 'package:flutter_store_app/domain/models/state_renderer_data.dart';
 import 'package:flutter_store_app/domain/usecases/register_usecase.dart';
@@ -23,8 +21,6 @@ class RegistrationViewModel extends BaseViewModel
 
   RegistrationViewModel({required this.registerUserCase});
 
-  //! Service locator
-  final _appPrefs = sl<AppPrefsRepository>();
   //=====================================
   //----------------[State]--------------
   //=====================================
@@ -69,7 +65,7 @@ class RegistrationViewModel extends BaseViewModel
   @override
   void register() async {
     stateRendererSink.add(
-      StateRendererData(
+      const StateRendererData(
         stateType: StateRendererType.loading,
         stateContainer: StateRendererContainer.popup,
       ),
@@ -85,7 +81,6 @@ class RegistrationViewModel extends BaseViewModel
         );
       },
       (response) {
-        _appPrefs.setIsUserLoggedIn(true);
         stateRendererSink.add(
           StateRendererData(
             stateType: StateRendererType.success,

@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter_store_app/app/app_prefs_repository.dart';
-import 'package:flutter_store_app/app/service_locator.dart';
 import 'package:flutter_store_app/data/requests/login_request.dart';
 import 'package:flutter_store_app/domain/models/state_renderer_data.dart';
 import 'package:flutter_store_app/domain/usecases/login_usecase.dart';
@@ -16,7 +14,6 @@ class LoginViewModel extends BaseViewModel
   //============================================
   final LoginUseCase _loginUseCase;
   LoginViewModel(this._loginUseCase);
-  final _appPrefs = sl<AppPrefsRepository>();
 
   //============================================
   //--------------[State]----------------------
@@ -44,15 +41,13 @@ class LoginViewModel extends BaseViewModel
   @override
   void login() async {
     stateRendererSink.add(
-      StateRendererData(
+      const StateRendererData(
         stateType: StateRendererType.loading,
         stateContainer: StateRendererContainer.popup,
       ),
     );
     var res = await _loginUseCase(_loginRequestData);
     res.fold((failure) {
-      print("-----------[FAILURE]---------------");
-      print(failure.message);
       stateRendererSink.add(
         StateRendererData(
           stateType: StateRendererType.failure,
@@ -61,12 +56,8 @@ class LoginViewModel extends BaseViewModel
         ),
       );
     }, (loginResponse) {
-      print("-----------[SUCCESS]---------------");
-      print(loginResponse.status);
-      print(loginResponse.message);
-      _appPrefs.setIsUserLoggedIn(true);
       stateRendererSink.add(
-        StateRendererData(
+        const StateRendererData(
           stateType: StateRendererType.success,
           stateContainer: StateRendererContainer.fullScreen,
           redirectRoute: AppRoutes.main,

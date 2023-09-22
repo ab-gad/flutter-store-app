@@ -15,4 +15,12 @@ abstract class AppImages {
   static const errorStateJsonImage = "assets/json/error.json";
   static const loadingStateJsonImage = "assets/json/loading.json";
   static const successStateJsonImage = "assets/json/success.json";
+
+  // ============[Settings screen icons]=============
+  static const changeLangIcon = "assets/images/change_lang_ic.svg";
+  static const inviteFriendsIcon = "assets/images/invite_friends_ic.svg";
+  static const logoutIcon = "assets/images/logout_ic.svg";
+  static const contactUsIcon = "assets/images/contact_us_ic.svg";
+  static const settingsRightArrowIcon =
+      "assets/images/settings_right_arrow_ic.svg";
 }

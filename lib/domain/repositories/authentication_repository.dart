@@ -10,6 +10,7 @@ abstract class AuthenticationRepository {
   Future<Either<Failure, LoginResponseModel>> register(
       RegisterRequest registerData);
   Future<Either<Failure, LoginResponseModel>> login(LoginRequest loginData);
+  Future<bool> logout();
   Future<Either<Failure, ForgotPasswordResponseModel>> forgotPassword(
       ForgotPasswordRequest forgotPasswordData);
 }

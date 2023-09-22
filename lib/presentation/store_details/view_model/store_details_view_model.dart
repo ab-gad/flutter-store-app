@@ -26,7 +26,7 @@ class StoreDetailsViewModel extends BaseViewModel
   @override
   getStoreDetails(int storeId) async {
     stateRendererSink.add(
-      StateRendererData(
+      const StateRendererData(
         stateType: StateRendererType.loading,
         stateContainer: StateRendererContainer.fullScreen,
       ),
@@ -46,7 +46,7 @@ class StoreDetailsViewModel extends BaseViewModel
     }, (storeData) {
       _storeDetailsSink.add(storeData);
       stateRendererSink.add(
-        StateRendererData(
+        const StateRendererData(
           stateType: StateRendererType.success,
           stateContainer: StateRendererContainer.content,
         ),

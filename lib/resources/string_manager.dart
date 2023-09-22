@@ -83,4 +83,9 @@ abstract class StringManager {
   static const storeDetails = 'Store details';
   static const details = 'Details';
   static const about = 'About';
+  // ===================[Settings]====================
+  static const contactUs = 'Contact Us';
+  static const inviteFriends = 'Invite Friends';
+  static const logout = 'Logout';
+  static const changeLang = 'Change Language';
 }

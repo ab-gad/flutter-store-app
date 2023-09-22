@@ -34,4 +34,12 @@ class StateRendererData {
       stateContainer: StateRendererContainer.fullScreen,
     );
   }
+
+  factory StateRendererData.redirect(AppRoutes redirectRoute) {
+    return StateRendererData(
+      stateType: StateRendererType.empty,
+      stateContainer: StateRendererContainer.fullScreen,
+      redirectRoute: redirectRoute,
+    );
+  }
 }

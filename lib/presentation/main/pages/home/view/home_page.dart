@@ -102,10 +102,10 @@ class _HomePageState extends State<HomePage> {
                       //--------------[Stores Grid]
                       //============================================
                       Padding(
-                        padding: const EdgeInsets.only(
+                        padding: const EdgeInsetsDirectional.only(
                           top: AppValues.v20,
                           bottom: AppValues.v10,
-                          left: AppValues.v10,
+                          start: AppValues.v10,
                         ),
                         child: Align(
                           alignment: AlignmentDirectional.centerStart,

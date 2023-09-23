@@ -1,11 +1,13 @@
 import 'dart:async';
 
+import 'package:flutter_store_app/app/app_regex.dart';
 import 'package:flutter_store_app/data/requests/login_request.dart';
 import 'package:flutter_store_app/domain/models/state_renderer_data.dart';
 import 'package:flutter_store_app/domain/usecases/login_usecase.dart';
 import 'package:flutter_store_app/presentation/base/base_view_model.dart';
 import 'package:flutter_store_app/presentation/common/enums/state_renderer_enums.dart';
 import 'package:flutter_store_app/resources/routes_manager.dart';
+import 'package:rxdart/subjects.dart';
 
 class LoginViewModel extends BaseViewModel
     implements LoginViewModelInput, LoginViewModelOutput {
@@ -18,11 +20,9 @@ class LoginViewModel extends BaseViewModel
   //============================================
   //--------------[State]----------------------
   //============================================
-  final StreamController<String> _useNameStreamCtrl =
-      StreamController.broadcast();
-  final StreamController<String> _passwordStreamCtrl =
-      StreamController.broadcast();
-  final StreamController _formStreamCtrl = StreamController.broadcast();
+  final StreamController<String> _useNameStreamCtrl = BehaviorSubject();
+  final StreamController<String> _passwordStreamCtrl = BehaviorSubject();
+  final StreamController _formStreamCtrl = BehaviorSubject();
 
   final _loginRequestData = LoginRequest();
 
@@ -108,11 +108,11 @@ class LoginViewModel extends BaseViewModel
   //--------------[Helpers]--------------------
   //============================================
   bool _isPasswordValid(String password) {
-    return password.isNotEmpty && password.length > 4;
+    return password.isNotEmpty && password.length > 5;
   }
 
   bool _isUsernameValid(String userName) {
-    return userName.isNotEmpty && userName.length > 4;
+    return AppRegex.emailRegex.hasMatch(userName);
   }
 
   bool _isFormValid(_) {

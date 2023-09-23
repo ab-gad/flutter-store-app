@@ -34,6 +34,8 @@ class _LoginViewState extends State<LoginView> {
     _passwordCtrl.addListener(() {
       _loginViewModel.setPassword(_passwordCtrl.value.text);
     });
+    _userNameCtrl.value = const TextEditingValue(text: "abc@gmail.com");
+    _passwordCtrl.value = const TextEditingValue(text: "123456");
     super.initState();
   }
 
@@ -81,11 +83,11 @@ class _LoginViewState extends State<LoginView> {
                             controller: _userNameCtrl,
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
-                              label: Text(LocaleKeys.userName.tr()),
-                              hintText: LocaleKeys.userNameHint.tr(),
+                              label: Text(LocaleKeys.emailLabel.tr()),
+                              hintText: LocaleKeys.emailHint.tr(),
                               errorText: (snapshot.data ?? true)
                                   ? null
-                                  : LocaleKeys.userNameErr.tr(),
+                                  : LocaleKeys.emailErr.tr(),
                             ),
                           );
                         })),

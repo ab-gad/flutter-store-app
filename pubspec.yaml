@@ -36,6 +36,7 @@ dev_dependencies:
   freezed: ^2.4.2
   json_serializable: ^6.7.1
   retrofit_generator: ^7.0.8
+  flutter_launcher_icons: "^0.13.1"
 
 flutter:
   uses-material-design: true
@@ -70,3 +71,11 @@ flutter:
     - assets/json/loading.json
     - assets/json/success.json
     - assets/l10n/
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/splash_logo.png"
+  adaptive_icon_background: "#ED9728"
+  remove_alpha_ios: true
+  background_color_ios: "#ED9728"

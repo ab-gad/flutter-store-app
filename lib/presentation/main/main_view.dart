@@ -1,5 +1,9 @@
+import 'dart:async';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_store_app/app/app_prefs_repository.dart';
+import 'package:flutter_store_app/app/service_locator.dart';
 import 'package:flutter_store_app/presentation/main/pages/home/view/home_page.dart';
 import 'package:flutter_store_app/presentation/main/pages/notification/notification_page.dart';
 import 'package:flutter_store_app/presentation/main/pages/search/search_page.dart';
@@ -18,6 +22,23 @@ class MainView extends StatefulWidget {
 
 class _MainViewState extends State<MainView> {
   _MainViewPages _activePage = _MainViewPages.home;
+
+  final _appPrefs = sl<AppPrefsRepository>();
+  late StreamSubscription<Locale> sub;
+
+  @override
+  void initState() {
+    sub = _appPrefs.appLangStream.listen((_) {
+      setState(() {});
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    sub.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

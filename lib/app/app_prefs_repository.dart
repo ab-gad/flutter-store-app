@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_store_app/app/app_constants.dart';
 import 'package:flutter_store_app/app/exceptions.dart';
 import 'package:flutter_store_app/app/failures.dart';
@@ -8,6 +11,8 @@ abstract class AppPrefsRepository {
   Future<String> get appLang;
   Future<bool> get isOnboardingViewed;
   Future<bool> get isUserLoggedIn;
+  Stream<Locale> get appLangStream;
+  Sink<Locale> get appLangStreamSink;
 
   Future<Either<CashFailure, void>> setIsOnboardingViewed(
       bool isOnboardingViewed);
@@ -16,6 +21,8 @@ abstract class AppPrefsRepository {
 
 class AppPrefsRepositoryImpl implements AppPrefsRepository {
   final LocalDataSources _localDataSource;
+  final StreamController<Locale> _appLangStreamCtrl =
+      StreamController.broadcast();
 
   AppPrefsRepositoryImpl(this._localDataSource);
 
@@ -70,4 +77,10 @@ class AppPrefsRepositoryImpl implements AppPrefsRepository {
       return Left(CashFailure(message: 'Can not cash isUserLoggedIn'));
     }
   }
+
+  @override
+  Stream<Locale> get appLangStream => _appLangStreamCtrl.stream;
+
+  @override
+  Sink<Locale> get appLangStreamSink => _appLangStreamCtrl.sink;
 }

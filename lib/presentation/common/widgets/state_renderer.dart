@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_store_app/app/extensions.dart';
@@ -5,10 +6,10 @@ import 'package:flutter_store_app/domain/models/state_renderer_content_data.dart
 import 'package:flutter_store_app/presentation/common/widgets/state_renderer_content.dart';
 import 'package:flutter_store_app/resources/assets_manager.dart';
 import 'package:flutter_store_app/resources/routes_manager.dart';
-import 'package:flutter_store_app/resources/string_manager.dart';
 import 'package:flutter_store_app/resources/values_manager.dart';
 
 import '../../../domain/models/state_renderer_data.dart';
+import '../../../generated/locale_keys.g.dart';
 import '../enums/state_renderer_enums.dart';
 
 class StateRenderer extends StatelessWidget {
@@ -69,7 +70,7 @@ class StateRenderer extends StatelessWidget {
                         width: AppValues.v100 * 2,
                         child: ElevatedButton(
                           onPressed: Navigator.of(context).pop,
-                          child: const Text(StringManager.ok),
+                          child: Text(LocaleKeys.ok.tr()),
                         ),
                       ),
                     ),
@@ -87,25 +88,25 @@ class StateRenderer extends StatelessWidget {
     return switch (stateRendererData.stateType) {
       StateRendererType.loading => StateRendererContentData(
           imageUrl: AppImages.loadingStateJsonImage,
-          message: stateRendererData.message ?? StringManager.loading,
+          message: stateRendererData.message ?? LocaleKeys.loading.tr(),
           title: stateRendererData.title.orEmpty(),
           retryFunction: stateRendererData.retryFunction,
         ),
       StateRendererType.failure => StateRendererContentData(
           imageUrl: AppImages.errorStateJsonImage,
-          message: stateRendererData.message ?? StringManager.unknownErr,
+          message: stateRendererData.message ?? LocaleKeys.unknownErr.tr(),
           title: stateRendererData.title.orEmpty(),
           retryFunction: stateRendererData.retryFunction,
         ),
       StateRendererType.success => StateRendererContentData(
           imageUrl: AppImages.successStateJsonImage,
-          message: stateRendererData.message ?? StringManager.success,
+          message: stateRendererData.message ?? LocaleKeys.success.tr(),
           title: stateRendererData.title.orEmpty(),
           retryFunction: stateRendererData.retryFunction,
         ),
       StateRendererType.empty => StateRendererContentData(
           imageUrl: AppImages.emptyStateJsonImage,
-          message: stateRendererData.message ?? StringManager.noData,
+          message: stateRendererData.message ?? LocaleKeys.noData.tr(),
           title: stateRendererData.title.orEmpty(),
           retryFunction: stateRendererData.retryFunction,
         ),

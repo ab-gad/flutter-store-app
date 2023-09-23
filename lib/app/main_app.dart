@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../resources/routes_manager.dart';
@@ -24,6 +25,10 @@ class _MainAppState extends State<MainApp> {
       onGenerateRoute: RoutesManager.generateRout,
       initialRoute: RoutesManager.splash,
       debugShowCheckedModeBanner: false,
+      //? Easy localization config
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
     );
   }
 }

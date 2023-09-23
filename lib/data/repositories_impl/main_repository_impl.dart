@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_store_app/app/failures.dart';
 import 'package:flutter_store_app/data/data_sources/remote/main_remote_data_source.dart';
 import 'package:flutter_store_app/data/network/network_info.dart';
@@ -7,7 +8,7 @@ import 'package:flutter_store_app/domain/repositories/main_repository.dart';
 
 import '../../app/exceptions.dart';
 import '../../domain/enums/response_status_enum.dart';
-import '../../resources/string_manager.dart';
+import '../../generated/locale_keys.g.dart';
 import '../data_sources/local/main_local_data_source.dart';
 
 class MainRepositoryImpl extends MainRepository {
@@ -46,7 +47,8 @@ class MainRepositoryImpl extends MainRepository {
             );
           }
         } else {
-          return Left(NoConnectionFailure(message: StringManager.noConnection));
+          return Left(
+              NoConnectionFailure(message: LocaleKeys.noConnection.tr()));
         }
       } on NetworkException catch (err) {
         return Left(NetworkFailure(
@@ -55,7 +57,7 @@ class MainRepositoryImpl extends MainRepository {
         ));
       } catch (e) {
         return Left(UnknownFailure(
-          message: StringManager.noConnection,
+          message: LocaleKeys.noConnection.tr(),
         ));
       }
     }
@@ -87,7 +89,8 @@ class MainRepositoryImpl extends MainRepository {
             );
           }
         } else {
-          return Left(NoConnectionFailure(message: StringManager.noConnection));
+          return Left(
+              NoConnectionFailure(message: LocaleKeys.noConnection.tr()));
         }
       } on NetworkException catch (err) {
         return Left(NetworkFailure(
@@ -96,7 +99,7 @@ class MainRepositoryImpl extends MainRepository {
         ));
       } catch (e) {
         return Left(UnknownFailure(
-          message: StringManager.noConnection,
+          message: LocaleKeys.noConnection.tr(),
         ));
       }
     }

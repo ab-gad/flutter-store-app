@@ -1,11 +1,13 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/presentation/main/pages/home/view/home_page.dart';
 import 'package:flutter_store_app/presentation/main/pages/notification/notification_page.dart';
 import 'package:flutter_store_app/presentation/main/pages/search/search_page.dart';
 import 'package:flutter_store_app/presentation/main/pages/settings/view/settings_page.dart';
 import 'package:flutter_store_app/resources/color_manager.dart';
-import 'package:flutter_store_app/resources/string_manager.dart';
 import 'package:flutter_store_app/resources/values_manager.dart';
+
+import '../../generated/locale_keys.g.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -21,7 +23,7 @@ class _MainViewState extends State<MainView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_activePage.title),
+        title: Text(_activePage.title.tr()),
       ),
       body: _activePage.page,
       bottomNavigationBar: Container(
@@ -41,22 +43,22 @@ class _MainViewState extends State<MainView> {
               });
             },
             currentIndex: _activePage.index,
-            items: const [
+            items: [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home_outlined),
-                label: StringManager.home,
+                label: LocaleKeys.home.tr(),
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.search),
-                label: StringManager.search,
+                label: LocaleKeys.search.tr(),
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.notifications_none),
-                label: StringManager.notification,
+                label: LocaleKeys.notification.tr(),
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.settings),
-                label: StringManager.settings,
+                label: LocaleKeys.settings.tr(),
               ),
             ]),
       ),
@@ -65,10 +67,10 @@ class _MainViewState extends State<MainView> {
 }
 
 enum _MainViewPages {
-  home(page: HomePage(), title: StringManager.home),
-  search(page: SearchPage(), title: StringManager.search),
-  notification(page: NotificationPage(), title: StringManager.notification),
-  settings(page: SettingsPage(), title: StringManager.settings);
+  home(page: HomePage(), title: LocaleKeys.home),
+  search(page: SearchPage(), title: LocaleKeys.search),
+  notification(page: NotificationPage(), title: LocaleKeys.notification),
+  settings(page: SettingsPage(), title: LocaleKeys.settings);
 
   final Widget page;
   final String title;

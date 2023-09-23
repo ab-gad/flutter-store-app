@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import '../../../generated/locale_keys.g.dart';
 import '../../base/base_view_model.dart';
 import 'onboarding_view_model_state.dart';
 import '../../../resources/constants_dart.dart';
@@ -8,7 +10,6 @@ import '../../../resources/routes_manager.dart';
 
 import '../../../domain/models/onboarding_view_models.dart';
 import '../../../resources/assets_manager.dart';
-import '../../../resources/string_manager.dart';
 
 class OnboardingViewModel extends BaseViewModel
     implements OnboardingViewModelInput, OnboardingViewModelOutput {
@@ -95,20 +96,20 @@ class OnboardingViewModel extends BaseViewModel
   List<SliderObject> _getSliderObjects() {
     return [
       SliderObject(
-          title: StringManager.sliderTitle1,
-          subTitle: StringManager.sliderSubTitle1,
+          title: LocaleKeys.sliderTitle1.tr(),
+          subTitle: LocaleKeys.sliderSubTitle1.tr(),
           imageUrl: AppImages.onboardingLogoSvg1),
       SliderObject(
-          title: StringManager.sliderTitle2,
-          subTitle: StringManager.sliderSubTitle2,
+          title: LocaleKeys.sliderTitle2.tr(),
+          subTitle: LocaleKeys.sliderSubTitle2.tr(),
           imageUrl: AppImages.onboardingLogoSvg2),
       SliderObject(
-          title: StringManager.sliderTitle3,
-          subTitle: StringManager.sliderSubTitle3,
+          title: LocaleKeys.sliderTitle3.tr(),
+          subTitle: LocaleKeys.sliderSubTitle3.tr(),
           imageUrl: AppImages.onboardingLogoSvg3),
       SliderObject(
-          title: StringManager.sliderTitle4,
-          subTitle: StringManager.sliderSubTitle4,
+          title: LocaleKeys.sliderTitle4.tr(),
+          subTitle: LocaleKeys.sliderSubTitle4.tr(),
           imageUrl: AppImages.onboardingLogoSvg4),
     ];
   }

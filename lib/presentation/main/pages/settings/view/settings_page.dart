@@ -1,12 +1,14 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/app/service_locator.dart';
 import 'package:flutter_store_app/presentation/common/widgets/state_renderer_stream.dart';
 import 'package:flutter_store_app/presentation/main/pages/settings/view_model/settings_view_model.dart';
 import 'package:flutter_store_app/resources/assets_manager.dart';
 import 'package:flutter_store_app/resources/color_manager.dart';
-import 'package:flutter_store_app/resources/string_manager.dart';
 import 'package:flutter_store_app/resources/values_manager.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../../../../../generated/locale_keys.g.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -20,19 +22,25 @@ class _SettingsPageState extends State<SettingsPage> {
 
   List<_SettingModel> get _settingsMenu => [
         _SettingModel(
-            title: StringManager.changeLang,
+            title: LocaleKeys.changeLang,
             iconUrl: AppImages.changeLangIcon,
-            onTapCallback: () {}),
+            onTapCallback: () {
+              if (context.locale.languageCode == 'en') {
+                context.setLocale(const Locale('ar'));
+              } else {
+                context.setLocale(const Locale('en'));
+              }
+            }),
         _SettingModel(
-            title: StringManager.contactUs,
+            title: LocaleKeys.contactUs,
             iconUrl: AppImages.contactUsIcon,
             onTapCallback: () {}),
         _SettingModel(
-            title: StringManager.inviteFriends,
+            title: LocaleKeys.inviteFriends,
             iconUrl: AppImages.inviteFriendsIcon,
             onTapCallback: () {}),
         _SettingModel(
-            title: StringManager.logout,
+            title: LocaleKeys.logout,
             iconUrl: AppImages.logoutIcon,
             onTapCallback: _viewModel.logout),
       ];
@@ -74,12 +82,15 @@ class _SettingsPageState extends State<SettingsPage> {
             settingData.iconUrl,
             width: AppValues.v20 + 5,
           ),
-          title: Text(settingData.title),
+          title: Text(settingData.title).tr(),
           trailing: SvgPicture.asset(AppImages.settingsRightArrowIcon),
           onTap: settingData.onTapCallback,
           textColor: AppColors.darkGrey.value,
           minVerticalPadding: AppValues.v20,
           titleAlignment: ListTileTitleAlignment.center,
+          subtitle: settingData.title == LocaleKeys.changeLang
+              ? Text(context.locale.toString())
+              : null,
         ),
         Divider(
           color: AppColors.lightGrey.value,

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_store_app/app/app_regex.dart';
 import 'package:flutter_store_app/app/extensions.dart';
 import 'package:flutter_store_app/data/requests/register_request.dart';
@@ -9,7 +10,8 @@ import 'package:flutter_store_app/domain/usecases/register_usecase.dart';
 import 'package:flutter_store_app/presentation/base/base_view_model.dart';
 import 'package:flutter_store_app/presentation/common/enums/state_renderer_enums.dart';
 import 'package:flutter_store_app/resources/routes_manager.dart';
-import 'package:flutter_store_app/resources/string_manager.dart';
+
+import '../../../generated/locale_keys.g.dart';
 
 class RegistrationViewModel extends BaseViewModel
     implements _RegistrationViewModelInput, _RegistrationViewModelOutput {
@@ -85,7 +87,7 @@ class RegistrationViewModel extends BaseViewModel
           StateRendererData(
             stateType: StateRendererType.success,
             stateContainer: StateRendererContainer.fullScreen,
-            title: StringManager.success,
+            title: LocaleKeys.success.tr(),
             message: response.message,
             redirectRoute: AppRoutes.main,
           ),

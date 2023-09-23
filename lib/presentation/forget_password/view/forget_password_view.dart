@@ -1,11 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/app/service_locator.dart';
 import 'package:flutter_store_app/presentation/common/widgets/state_renderer_stream.dart';
 import 'package:flutter_store_app/presentation/forget_password/view_model/forgot_password_view_model.dart';
 
+import '../../../generated/locale_keys.g.dart';
 import '../../../resources/assets_manager.dart';
 import '../../../resources/color_manager.dart';
-import '../../../resources/string_manager.dart';
 import '../../../resources/values_manager.dart';
 
 class ForgetPasswordView extends StatefulWidget {
@@ -71,11 +72,11 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                             controller: _emailCtrl,
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
-                              label: const Text(StringManager.emailLabel),
-                              hintText: StringManager.emailHint,
+                              label: Text(LocaleKeys.emailLabel.tr()),
+                              hintText: LocaleKeys.emailHint.tr(),
                               errorText: (snapshot.data ?? true)
                                   ? null
-                                  : StringManager.emailErr,
+                                  : LocaleKeys.emailErr.tr(),
                             ),
                           ),
                           const SizedBox(
@@ -88,7 +89,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                               onPressed: (snapshot.data ?? false)
                                   ? _forgetPasswordViewModel.forgetPassword
                                   : null,
-                              child: const Text(StringManager.resetPassword),
+                              child: Text(LocaleKeys.resetPassword.tr()),
                             ),
                           ),
                         ],
@@ -103,7 +104,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                 ),
                 onPressed: () {},
                 child: Text(
-                  StringManager.didNotReceiveEmail,
+                  LocaleKeys.didNotReceiveEmail.tr(),
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
               ),

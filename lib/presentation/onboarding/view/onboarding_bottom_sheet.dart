@@ -1,8 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import '../../../generated/locale_keys.g.dart';
 import '../view_model/onboarding_view_model.dart';
 
 import '../../../resources/color_manager.dart';
-import '../../../resources/string_manager.dart';
 import '../../../resources/values_manager.dart';
 
 class OnboardingBottomSheet extends StatelessWidget {
@@ -19,14 +20,14 @@ class OnboardingBottomSheet extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Align(
-          alignment: Alignment.centerRight,
+          alignment: AlignmentDirectional.centerStart,
           child: TextButton(
             style: TextButton.styleFrom(
               foregroundColor: ColorManager.primary,
             ),
             onPressed: () => _onboardingViewModel.skipOnboarding(context),
             child: Text(
-              StringManager.skip,
+              LocaleKeys.skip.tr(),
               style: Theme.of(context).textTheme.titleMedium,
             ),
           ),

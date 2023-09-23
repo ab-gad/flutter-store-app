@@ -1,12 +1,14 @@
 import 'dart:async';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_store_app/app/app_regex.dart';
 import 'package:flutter_store_app/data/requests/fogot_password_request.dart';
 import 'package:flutter_store_app/domain/models/state_renderer_data.dart';
 import 'package:flutter_store_app/domain/usecases/forgot_password_usecase.dart';
 import 'package:flutter_store_app/presentation/base/base_view_model.dart';
 import 'package:flutter_store_app/presentation/common/enums/state_renderer_enums.dart';
-import 'package:flutter_store_app/resources/string_manager.dart';
+
+import '../../../generated/locale_keys.g.dart';
 
 class ForgotPasswordViewModel extends BaseViewModel
     implements _ForgotPasswordViewModelInput, _ForgotPasswordViewModelOutput {
@@ -63,7 +65,7 @@ class ForgotPasswordViewModel extends BaseViewModel
         StateRendererData(
           stateType: StateRendererType.success,
           stateContainer: StateRendererContainer.popup,
-          title: StringManager.success,
+          title: LocaleKeys.success.tr(),
           message: response.support,
         ),
       );

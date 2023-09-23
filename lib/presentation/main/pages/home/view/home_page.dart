@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/app/service_locator.dart';
 import 'package:flutter_store_app/domain/models/home_data_model.dart';
@@ -8,10 +9,10 @@ import 'package:flutter_store_app/presentation/common/widgets/state_renderer_con
 import 'package:flutter_store_app/presentation/main/pages/home/veiw_model/home_view_model.dart';
 import 'package:flutter_store_app/resources/assets_manager.dart';
 import 'package:flutter_store_app/resources/routes_manager.dart';
-import 'package:flutter_store_app/resources/string_manager.dart';
 import 'package:flutter_store_app/resources/values_manager.dart';
 
 import '../../../../../domain/models/state_renderer_content_data.dart';
+import '../../../../../generated/locale_keys.g.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,10 +22,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  static const noDataWidget = StateRendererContent(
+  static final noDataWidget = StateRendererContent(
     stateData: StateRendererContentData(
       imageUrl: AppImages.emptyStateJsonImage,
-      message: StringManager.noData,
+      message: LocaleKeys.noData.tr(),
     ),
   );
 
@@ -86,9 +87,9 @@ class _HomePageState extends State<HomePage> {
                                 bottom: AppValues.v10,
                               ),
                               child: Align(
-                                alignment: Alignment.centerLeft,
+                                alignment: AlignmentDirectional.centerStart,
                                 child: Text(
-                                  StringManager.services,
+                                  LocaleKeys.services.tr(),
                                   style: Theme.of(context).textTheme.titleLarge,
                                 ),
                               ),
@@ -107,9 +108,9 @@ class _HomePageState extends State<HomePage> {
                           left: AppValues.v10,
                         ),
                         child: Align(
-                          alignment: Alignment.centerLeft,
+                          alignment: AlignmentDirectional.centerStart,
                           child: Text(
-                            StringManager.stores,
+                            LocaleKeys.stores.tr(),
                             style: Theme.of(context).textTheme.titleLarge,
                           ),
                         ),

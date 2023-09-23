@@ -1,15 +1,16 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/presentation/registration/view_model/registeration_view_model.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 
 import '../../../app/service_locator.dart';
+import '../../../generated/locale_keys.g.dart';
 import '../../../resources/assets_manager.dart';
 import '../../../resources/color_manager.dart';
 import '../../../resources/routes_manager.dart';
-import '../../../resources/string_manager.dart';
 import '../../../resources/values_manager.dart';
 import '../../common/widgets/state_renderer_stream.dart';
 
@@ -141,11 +142,11 @@ class _RegistrationViewState extends State<RegistrationView> {
                             controller: _userNameCtrl,
                             keyboardType: TextInputType.name,
                             decoration: InputDecoration(
-                              label: const Text(StringManager.userName),
-                              hintText: StringManager.userNameHint,
+                              label: Text(LocaleKeys.userName.tr()),
+                              hintText: LocaleKeys.userNameHint.tr(),
                               errorText: (snapshot.data ?? true)
                                   ? null
-                                  : StringManager.userNameErr,
+                                  : LocaleKeys.userNameErr.tr(),
                             ),
                           );
                         })),
@@ -159,11 +160,11 @@ class _RegistrationViewState extends State<RegistrationView> {
                             controller: _emailCtrl,
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
-                              label: const Text(StringManager.emailLabel),
-                              hintText: StringManager.emailHint,
+                              label: Text(LocaleKeys.emailLabel.tr()),
+                              hintText: LocaleKeys.emailHint.tr(),
                               errorText: (snapshot.data ?? true)
                                   ? null
-                                  : StringManager.emailErr,
+                                  : LocaleKeys.emailErr.tr(),
                             ),
                           );
                         })),
@@ -177,11 +178,11 @@ class _RegistrationViewState extends State<RegistrationView> {
                             controller: _passwordCtrl,
                             keyboardType: TextInputType.visiblePassword,
                             decoration: InputDecoration(
-                              label: const Text(StringManager.password),
-                              hintText: StringManager.password,
+                              label: Text(LocaleKeys.password.tr()),
+                              hintText: LocaleKeys.password.tr(),
                               errorText: (snapshot.data ?? true)
                                   ? null
-                                  : StringManager.passwordErr,
+                                  : LocaleKeys.passwordErr.tr(),
                             ),
                           );
                         })),
@@ -222,12 +223,11 @@ class _RegistrationViewState extends State<RegistrationView> {
                                   controller: _mobileNumberCtrl,
                                   keyboardType: TextInputType.phone,
                                   decoration: InputDecoration(
-                                    label:
-                                        const Text(StringManager.phoneNoLabel),
-                                    hintText: StringManager.phoneNoHint,
+                                    label: Text(LocaleKeys.phoneNoLabel.tr()),
+                                    hintText: LocaleKeys.phoneNoHint.tr(),
                                     errorText: (snapshot.data ?? true)
                                         ? null
-                                        : StringManager.phoneNoErr,
+                                        : LocaleKeys.phoneNoErr.tr(),
                                   ),
                                 );
                               })),
@@ -250,7 +250,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                         onPressed: (snapshot.data ?? false)
                             ? _registerViewModel.register
                             : null,
-                        child: const Text(StringManager.register),
+                        child: Text(LocaleKeys.register.tr()),
                       );
                     }),
               ),
@@ -268,7 +268,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                   );
                 },
                 child: Text(
-                  StringManager.alreadyHaveAccount,
+                  LocaleKeys.alreadyHaveAccount.tr(),
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
               ),
@@ -290,7 +290,7 @@ class _RegistrationViewState extends State<RegistrationView> {
               children: [
                 ListTile(
                   leading: const Icon(Icons.photo),
-                  title: const Text(StringManager.chooseFromGallery),
+                  title: Text(LocaleKeys.chooseFromGallery.tr()),
                   trailing: const Icon(Icons.arrow_forward_ios_rounded),
                   onTap: _selectPhotoFromGallery,
                 ),
@@ -299,7 +299,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                 ),
                 ListTile(
                   leading: const Icon(Icons.camera),
-                  title: const Text(StringManager.takeAPicture),
+                  title: Text(LocaleKeys.takeAPicture.tr()),
                   trailing: const Icon(Icons.arrow_forward_ios_rounded),
                   onTap: _selectPhotoUsingCamera,
                 ),

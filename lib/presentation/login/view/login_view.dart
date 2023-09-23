@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/app/extensions.dart';
 import 'package:flutter_store_app/app/service_locator.dart';
@@ -5,9 +6,9 @@ import 'package:flutter_store_app/presentation/common/widgets/state_renderer_str
 import 'package:flutter_store_app/presentation/login/view_model/login_view_model.dart';
 import 'package:flutter_store_app/resources/assets_manager.dart';
 import 'package:flutter_store_app/resources/routes_manager.dart';
-import 'package:flutter_store_app/resources/string_manager.dart';
 import 'package:flutter_store_app/resources/values_manager.dart';
 
+import '../../../generated/locale_keys.g.dart';
 import '../../../resources/color_manager.dart';
 
 class LoginView extends StatefulWidget {
@@ -80,11 +81,11 @@ class _LoginViewState extends State<LoginView> {
                             controller: _userNameCtrl,
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
-                              label: const Text(StringManager.userName),
-                              hintText: StringManager.userNameHint,
+                              label: Text(LocaleKeys.userName.tr()),
+                              hintText: LocaleKeys.userNameHint.tr(),
                               errorText: (snapshot.data ?? true)
                                   ? null
-                                  : StringManager.userNameErr,
+                                  : LocaleKeys.userNameErr.tr(),
                             ),
                           );
                         })),
@@ -98,11 +99,11 @@ class _LoginViewState extends State<LoginView> {
                             controller: _passwordCtrl,
                             keyboardType: TextInputType.visiblePassword,
                             decoration: InputDecoration(
-                              label: const Text(StringManager.password),
-                              hintText: StringManager.password,
+                              label: Text(LocaleKeys.password.tr()),
+                              hintText: LocaleKeys.password.tr(),
                               errorText: (snapshot.data ?? true)
                                   ? null
-                                  : StringManager.passwordErr,
+                                  : LocaleKeys.passwordErr.tr(),
                             ),
                           );
                         })),
@@ -122,12 +123,12 @@ class _LoginViewState extends State<LoginView> {
                         onPressed: (snapshot.data.orFalse())
                             ? _loginViewModel.login
                             : null,
-                        child: const Text(StringManager.login),
+                        child: Text(LocaleKeys.login.tr()),
                       );
                     }),
               ),
               Align(
-                alignment: Alignment.bottomLeft,
+                alignment: AlignmentDirectional.bottomStart,
                 child: TextButton(
                   style: TextButton.styleFrom(
                     foregroundColor: ColorManager.primary,
@@ -139,13 +140,13 @@ class _LoginViewState extends State<LoginView> {
                     );
                   },
                   child: Text(
-                    StringManager.forgotPassword,
+                    LocaleKeys.forgotPassword.tr(),
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ),
               ),
               Align(
-                alignment: Alignment.bottomLeft,
+                alignment: AlignmentDirectional.bottomStart,
                 child: TextButton(
                   style: TextButton.styleFrom(
                     foregroundColor: ColorManager.primary,
@@ -157,7 +158,7 @@ class _LoginViewState extends State<LoginView> {
                     );
                   },
                   child: Text(
-                    StringManager.notMember,
+                    LocaleKeys.notMember.tr(),
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ),

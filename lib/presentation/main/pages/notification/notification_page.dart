@@ -1,15 +1,16 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../resources/string_manager.dart';
+import '../../../../generated/locale_keys.g.dart';
 
 class NotificationPage extends StatelessWidget {
   const NotificationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: Text(
-        StringManager.notification,
+        LocaleKeys.notification.tr(),
       ),
     );
   }

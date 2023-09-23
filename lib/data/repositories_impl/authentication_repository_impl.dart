@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_store_app/app/exceptions.dart';
 import 'package:flutter_store_app/app/extensions.dart';
 import 'package:flutter_store_app/app/failures.dart';
@@ -13,10 +14,10 @@ import 'package:flutter_store_app/domain/enums/response_status_enum.dart';
 import 'package:flutter_store_app/domain/models/forgot_password_response_moder.dart';
 import 'package:flutter_store_app/domain/models/login_models.dart';
 import 'package:flutter_store_app/domain/repositories/authentication_repository.dart';
-import 'package:flutter_store_app/resources/string_manager.dart';
 
 import '../../app/app_prefs_repository.dart';
 import '../../app/service_locator.dart';
+import '../../generated/locale_keys.g.dart';
 
 class AuthenticationRepositoryImpl implements AuthenticationRepository {
   final AuthenticationRemoteDataSource _remoteDataSource;
@@ -48,12 +49,12 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
           );
         }
       } else {
-        return Left(NoConnectionFailure(message: StringManager.noConnection));
+        return Left(NoConnectionFailure(message: LocaleKeys.noConnection.tr()));
       }
     } on NetworkException catch (err) {
       return Left(NetworkFailure(message: err.message, code: 1));
     } catch (e) {
-      return Left(UnknownFailure(message: StringManager.noConnection));
+      return Left(UnknownFailure(message: LocaleKeys.noConnection.tr()));
     }
   }
 
@@ -75,12 +76,12 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
           );
         }
       } else {
-        return Left(NoConnectionFailure(message: StringManager.noConnection));
+        return Left(NoConnectionFailure(message: LocaleKeys.noConnection.tr()));
       }
     } on NetworkException catch (err) {
       return Left(NetworkFailure(message: err.message, code: 1));
     } catch (e) {
-      return Left(UnknownFailure(message: StringManager.noConnection));
+      return Left(UnknownFailure(message: LocaleKeys.noConnection.tr()));
     }
   }
 
@@ -101,12 +102,12 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
           );
         }
       } else {
-        return Left(NoConnectionFailure(message: StringManager.noConnection));
+        return Left(NoConnectionFailure(message: LocaleKeys.noConnection.tr()));
       }
     } on NetworkException catch (err) {
       return Left(NetworkFailure(message: err.message, code: 1));
     } catch (e) {
-      return Left(UnknownFailure(message: StringManager.noConnection));
+      return Left(UnknownFailure(message: LocaleKeys.noConnection.tr()));
     }
   }
 

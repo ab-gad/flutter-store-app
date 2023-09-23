@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/domain/models/state_renderer_content_data.dart';
-import 'package:flutter_store_app/resources/string_manager.dart';
 import 'package:flutter_store_app/resources/style_manager.dart';
 import 'package:flutter_store_app/resources/values_manager.dart';
 import 'package:lottie/lottie.dart';
+
+import '../../../generated/locale_keys.g.dart';
 
 /// Each state has the same components
 /// a centered columns that hold an image
@@ -47,8 +49,8 @@ class StateRendererContent extends StatelessWidget {
                 height: AppValues.v20 * 2,
                 child: ElevatedButton(
                   onPressed: stateData.retryFunction,
-                  child: const Text(
-                    StringManager.tryAgain,
+                  child: Text(
+                    LocaleKeys.tryAgain.tr(),
                     textAlign: TextAlign.center,
                   ),
                 ),

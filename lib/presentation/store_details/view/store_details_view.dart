@@ -1,11 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/app/service_locator.dart';
 import 'package:flutter_store_app/domain/models/home_data_model.dart';
 import 'package:flutter_store_app/domain/models/state_renderer_data.dart';
 import 'package:flutter_store_app/presentation/store_details/view_model/store_details_view_model.dart';
-import 'package:flutter_store_app/resources/string_manager.dart';
 import 'package:flutter_store_app/resources/values_manager.dart';
 
+import '../../../generated/locale_keys.g.dart';
 import '../../common/widgets/state_renderer_stream.dart';
 
 class StoreDetailsView extends StatefulWidget {
@@ -31,7 +32,7 @@ class _StoreDetailsViewState extends State<StoreDetailsView> {
     _viewModel.getStoreDetails(store.id);
     return Scaffold(
       appBar: AppBar(
-        title: const Text(StringManager.banners),
+        title: Text(LocaleKeys.banners.tr()),
       ),
       body: SingleChildScrollView(
           child: Column(
@@ -90,15 +91,15 @@ class _StoreDetailsViewState extends State<StoreDetailsView> {
           return Column(
             children: [
               _getSection(
-                StringManager.details,
+                LocaleKeys.details.tr(),
                 snapshot.data!.details,
               ),
               _getSection(
-                StringManager.about,
+                LocaleKeys.about.tr(),
                 snapshot.data!.about,
               ),
               _getSection(
-                StringManager.services,
+                LocaleKeys.services.tr(),
                 snapshot.data!.services,
               )
             ],
@@ -112,7 +113,7 @@ class _StoreDetailsViewState extends State<StoreDetailsView> {
       child: Column(
         children: [
           Align(
-            alignment: Alignment.bottomLeft,
+            alignment: AlignmentDirectional.bottomStart,
             child: Text(
               title,
               style: Theme.of(context).textTheme.titleLarge,

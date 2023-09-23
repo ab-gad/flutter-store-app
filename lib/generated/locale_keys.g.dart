@@ -1,0 +1,62 @@
+// DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
+
+abstract class  LocaleKeys {
+  static const emptyString = 'emptyString';
+  static const pageNotFound = 'pageNotFound';
+  static const pageNotFoundMsg = 'pageNotFoundMsg';
+  static const noConnection = 'noConnection';
+  static const loading = 'loading';
+  static const unknownErr = 'unknownErr';
+  static const ok = 'ok';
+  static const success = 'success';
+  static const noData = 'noData';
+  static const tryAgain = 'tryAgain';
+  static const skip = 'skip';
+  static const sliderTitle1 = 'sliderTitle1';
+  static const sliderTitle2 = 'sliderTitle2';
+  static const sliderTitle3 = 'sliderTitle3';
+  static const sliderTitle4 = 'sliderTitle4';
+  static const sliderSubTitle1 = 'sliderSubTitle1';
+  static const sliderSubTitle2 = 'sliderSubTitle2';
+  static const sliderSubTitle3 = 'sliderSubTitle3';
+  static const sliderSubTitle4 = 'sliderSubTitle4';
+  static const login = 'login';
+  static const userName = 'userName';
+  static const password = 'password';
+  static const userNameErr = 'userNameErr';
+  static const passwordErr = 'passwordErr';
+  static const userNameHint = 'userNameHint';
+  static const passwordHint = 'passwordHint';
+  static const forgotPassword = 'forgotPassword';
+  static const notMember = 'notMember';
+  static const resetPassword = 'resetPassword';
+  static const didNotReceiveEmail = 'didNotReceiveEmail';
+  static const emailLabel = 'emailLabel';
+  static const emailHint = 'emailHint';
+  static const emailErr = 'emailErr';
+  static const register = 'register';
+  static const chooseFromGallery = 'chooseFromGallery';
+  static const takeAPicture = 'takeAPicture';
+  static const alreadyHaveAccount = 'alreadyHaveAccount';
+  static const phoneNoLabel = 'phoneNoLabel';
+  static const phoneNoHint = 'phoneNoHint';
+  static const phoneNoErr = 'phoneNoErr';
+  static const profilePictureLabel = 'profilePictureLabel';
+  static const profilePictureHint = 'profilePictureHint';
+  static const profilePictureErr = 'profilePictureErr';
+  static const home = 'home';
+  static const search = 'search';
+  static const notification = 'notification';
+  static const settings = 'settings';
+  static const banners = 'banners';
+  static const stores = 'stores';
+  static const services = 'services';
+  static const storeDetails = 'storeDetails';
+  static const details = 'details';
+  static const about = 'about';
+  static const contactUs = 'contactUs';
+  static const inviteFriends = 'inviteFriends';
+  static const logout = 'logout';
+  static const changeLang = 'changeLang';
+
+}
